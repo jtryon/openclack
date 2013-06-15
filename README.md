@@ -30,7 +30,7 @@ A bit of info on what this keyboard actually is. : )
  - Notes explaining the LED configuration.  Info on the boost converter, resitors and general math.
 - misc_notes.txt
  - Some general info I referenced throughout the project.
-- front.jpg, back.jpg, pcb.jpg
+- front.png, back.png, pcb.png
  - A few screenshots showing a rough draft of the pcb and case design.  These are NOT 100% accurate representations.  The CAD files are though.  These are just for a bit of reference and eyeballing.
 
 #####Progress:

@@ -1,0 +1,16 @@
+####Misc:
+* You need to cut the plate to allow the mini-b header proper clearance.
+
+* Info on screws and inserts:
+** Inserts - Fits 4.5mm hole drilled with 1/8" holes, http://www.mcmaster.com/#cadinlnord/94615a111/=n6z5nx
+** Screws - Something from here probably, stainless steel or potentially nylon, http://www.mcmaster.com/#machine-screw-fasteners/=n6zd5c
+** All screw holes are 0.2395" from edge (center of edge lines) of case and are 0.045" in radius.
+
+* Layer Cake notes (calculating clearance for controler and free room, we don't want to be scratching the acrylic with solder boobs if we can help it).
+** 9mm for spacer
+** 1.524mm for plate
+** 10.524mm together
+** 5.0038mm from the top of the plate to the top of the pcb
+** 5.5202mm left
+** 1.66mm pcb
+** 3.8602mm clearance below pcb

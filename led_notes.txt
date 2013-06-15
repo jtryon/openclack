@@ -1,0 +1,26 @@
+30v boost converter = 8 leds
+
+
+
+Ct=691 pF (get something bigger up to 1000pF)
+Ipk=1176 mA 
+Rsc=0.255 Ohm (looks for something very close to this, smaller is better than larger)
+Lmin=59 uH (larger is fine, up to 100 or 200 instead of suggested) 
+Co=41 uF (can be higher, 50 is fine look for that, or 47 (look for 50 v for co))
+R=180 Ohm
+R1=2.7k R2=62k (29.95V)    (1/8TH WATT or 1/4 watt is fine) 
+
+
+http://i.imgur.com/fYjm3gX.png
+
+led spec
+http://i.imgur.com/byaA0ti.png
+adjusted for row of 7
+http://i.imgur.com/gCZWaZZ.png
+
+
+diagram of leds:
+http://i.imgur.com/Zjq5S28.png
+
+750ma fuse (slow blow)
+new better fuse http://www.digikey.ca/product-detail/en/ZVN4206AV/ZVN4206AV-ND/190158
