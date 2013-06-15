@@ -15,3 +15,5 @@ All insert holes are 0.2395" from edge (corner, center of intersecting lines) of
 5.5202mm left
 1.66mm pcb
 3.8602mm clearance below pcb
+
+* Bottom 1.5mm (0.059") acrylic sheet + .053" screw head ( from http://www.mcmaster.com/#cadinlnord/91770a071/=n7g0kg ) sticks out from bottom by 2.85mm.  Need rubber feet thicker than 3mm aprox.
