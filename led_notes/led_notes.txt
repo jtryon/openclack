@@ -1,0 +1,64 @@
+10 sets of 8 leds each in series
+1 odd set with 7 leds in series
+
+power via boost converter and related componenents
+
+http://hobby-hour.com/electronics/ledcalc.php
+http://www.nomad.ee/micros/mc34063a/
+
+teensy 2.0++ typical current draw 60.2 mA
+boost converter efficiency is aprox 80%+
+
+Revised Part List:
+===========================
+
+LED CALC Results (8 series):
+Calculated resistance:	200O
+Nearest lower 5% resistor:	180O
+Nearest higher 5% resistor:	200O**
+Power dissipated by the resistor:	9.8 mW
+Recommended resistor Wattage:	1/8 W
+Power consumed by the LEDs (PLED):	123.2 mW
+Total power consumption (PTotal):	133 mW
+Efficiency (PLED/PTotal) x 100 :	92.63 %
+
+LED CALC Results (7 series):
+Calculated resistance:	514.29O
+Nearest lower 5% resistor:	510O*
+Nearest higher 5% resistor:	560O
+Power dissipated by the resistor:	25.2 mW
+Recommended resistor Wattage:	1/8 W
+Power consumed by the LEDs (PLED):	107.8 mW
+Total power consumption (PTotal):	133 mW
+Efficiency (PLED/PTotal) x 100 :	81.05 %
+
+MC34063A CALC Results:
+Ct=626 pF		(above 700 pf cap)
+Ipk=773 mA
+Rsc=0.388 Ohm   (rsc<= 0.3 Ohm resistor, 1/4 watt resistor)
+Lmin=81 uH      (minimum inductor, 100mh)
+Co=39 uF		(47 mf cap for here, supports 25v+)
+R=180 Ohm
+R1=3.6k R2=51k (18.96V)
+http://i.imgur.com/qerIIto.png
+1N5818, 1N5819 schottky diode
+//All otherwise unmentioned resistors can be 1/8th watt//
+
+Headroom between plate and pcb: 3.50mm
+
+Co:			http://www.digikey.ca/product-detail/en/TR3D476K025C0150/718-1525-1-ND/1860000          thickness: 3.10mm
+Ct:			http://www.digikey.ca/product-detail/en/C410C102K1R5TA7200/399-4450-1-ND/818307         thickness: 2.54mm
+Input cap:	http://www.digikey.ca/product-detail/en/RVA0J101MNG/493-6670-1-ND/3465996               thickness: 3.00mm
+Inductor:	http://www.digikey.ca/product-detail/en/SCRH103R-101/595-1406-1-ND/2771443              thickness: 3.10mm
+R:			http://www.digikey.ca/product-detail/en/CF18JT180R/CF18JT180RCT-ND/2022724              thickness: 1.70mm
+R1:			http://www.digikey.ca/product-detail/en/CF18JT3K60/CF18JT3K60CT-ND/2022755              thickness: 1.70mm
+R2:			http://www.digikey.ca/product-detail/en/CF18JT51K0/CF18JT51K0CT-ND/2022783              thickness: 1.70mm
+Rsc:		http://www.digikey.ca/product-detail/en/1622602-1/A105966CT-ND/3477549                  thickness: 2.30mm
+Schottky D:	http://www.digikey.ca/product-detail/en/1N5818-T/1N5818DITR-ND/22054                    thickness: 2.72mm
+BoostCvrtr:	http://www.digikey.ca/product-detail/en/MC34063ACD-TR/497-7850-1-ND/1883654             thickness: 1.75mm
+FET:		http://www.digikey.ca/product-detail/en/IRLML2060TRPBF/IRLML2060TRPBFCT-ND/2271917		thickness: 1.12mm
+
+FUSE:		http://www.digikey.ca/product-detail/en/MQ%20750/507-1012-ND/614992						thickness: 3.18mm
+or			http://www.digikey.ca/product-detail/en/0251.750MXL/F2353-ND/776753
+
+LED:		http://www.digikey.ca/product-detail/en/OVLBR4C7/365-1175-ND/827111

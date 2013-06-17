@@ -1,4 +1,8 @@
-EESchema-DOCLIB  Version 2.0  Date: 14/06/2013 12:28:09 PM
+EESchema-DOCLIB  Version 2.0  Date: 16/06/2013 4:14:20 PM
+#
+$CMP CP1
+D Condensateur polarise
+$ENDCMP
 #
 $CMP FQPF13N06L
 D FQPF13N06L
@@ -6,6 +10,15 @@ $ENDCMP
 #
 $CMP FUSE
 D FUSE
+$ENDCMP
+#
+$CMP FUSE_GENERIC
+D FUSE
+$ENDCMP
+#
+$CMP MC34063
+D 1.5A step up/down/inverting switching regulator
+F regulator/mc34063.pdf
 $ENDCMP
 #
 $CMP MC34063ABN

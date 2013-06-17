@@ -1,20 +1,10 @@
-update=14/06/2013 11:26:58 AM
-last_client=pcbnew
+update=16/06/2013 4:14:27 PM
+last_client=eeschema
 [general]
 version=1
 [cvpcb]
 version=1
 NetIExt=net
-[eeschema]
-version=1
-LibDir=
-NetFmtName=
-RptD_X=0
-RptD_Y=100
-RptLab=1
-LabSize=60
-[eeschema/libraries]
-LibName1=components
 [pcbnew]
 version=1
 LastNetListRead=toasty-tkl.net
@@ -37,3 +27,13 @@ ModuleOutlineThickness=0.150000000000
 [pcbnew/libraries]
 LibDir=
 LibName1=footprints
+[eeschema]
+version=1
+LibDir=
+NetFmtName=
+RptD_X=0
+RptD_Y=100
+RptLab=1
+LabSize=60
+[eeschema/libraries]
+LibName1=components

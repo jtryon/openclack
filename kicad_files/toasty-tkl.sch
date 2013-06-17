@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2
+EESchema Schematic File Version 2  date 16/06/2013 8:00:48 PM
 LIBS:components
 LIBS:toasty-tkl-cache
 EELAYER 27 0
@@ -7,7 +7,7 @@ $Descr User 16535 7283
 encoding utf-8
 Sheet 1 1
 Title "Toasty TKL"
-Date "14 jun 2013"
+Date "17 jun 2013"
 Rev "REV 1A"
 Comp ""
 Comment1 ""
@@ -2125,14 +2125,14 @@ LEDCOL9
 Text Label 11850 4550 2    30   ~ 0
 LEDCOL10
 $Comp
-L MC34063ABN VREG1
+L MC34063 VREG1
 U 1 1 519C1E60
-P -750 7200
-F 0 "VREG1" H -750 7550 60  0000 C CNN
-F 1 "MC34063ABN" H -750 6850 60  0000 C CNN
-F 2 "" H -750 7200 60  0000 C CNN
-F 3 "" H -750 7200 60  0000 C CNN
-	1    -750 7200
+P -1650 8800
+F 0 "VREG1" H -1650 9150 60  0000 C CNN
+F 1 "MC34063ABN" H -1650 8450 60  0000 C CNN
+F 2 "" H -1650 8800 60  0000 C CNN
+F 3 "" H -1650 8800 60  0000 C CNN
+	1    -1650 8800
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -2257,26 +2257,149 @@ F 3 "" H 10400 -1550 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L FQPF13N06L FET1
-U 1 1 519C45FB
-P 9900 -2900
-F 0 "FET1" H 9900 -3200 60  0000 C CNN
-F 1 "ZVN4206AV" H 9950 -2600 60  0000 C CNN
-F 2 "" H 9900 -2900 60  0000 C CNN
-F 3 "" H 9900 -2900 60  0000 C CNN
-	1    9900 -2900
+L FUSE F1
+U 1 1 519CE3F5
+P -1650 10900
+F 0 "F1" H -1650 10750 60  0000 C CNN
+F 1 "FUSE" H -1650 11050 60  0000 C CNN
+F 2 "" H -1650 10900 60  0000 C CNN
+F 3 "" H -1650 10900 60  0000 C CNN
+	1    -1650 10900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L USB-MINI-B CON1
+U 1 1 51BB5678
+P 5000 -2300
+F 0 "CON1" H 4750 -1850 60  0000 C CNN
+F 1 "USB-MINI-B" H 4950 -2800 60  0000 C CNN
+F 2 "" H 5000 -2300 60  0000 C CNN
+F 3 "" H 5000 -2300 60  0000 C CNN
+	1    5000 -2300
+	1    0    0    -1  
+$EndComp
+Text Label 17600 7700 2    60   ~ 0
+GND
+$Comp
+L USB-MINI-B_EXT U1
+U 1 1 51BB56F7
+P 3600 -2300
+F 0 "U1" H 3600 -1850 60  0000 C CNN
+F 1 "USB-MINI-B_EXT" H 3600 -2800 60  0000 C CNN
+F 2 "" H 3600 -2300 60  0000 C CNN
+F 3 "" H 3600 -2300 60  0000 C CNN
+	1    3600 -2300
 	1    0    0    -1  
 $EndComp
 $Comp
-L FUSE F1
-U 1 1 519CE3F5
-P -650 8050
-F 0 "F1" H -650 7900 60  0000 C CNN
-F 1 "FUSE" H -650 8200 60  0000 C CNN
-F 2 "" H -650 8050 60  0000 C CNN
-F 3 "" H -650 8050 60  0000 C CNN
-	1    -650 8050
+L FET_N Q?
+U 1 1 51BE4888
+P 9850 -3300
+F 0 "Q?" H 9753 -3050 70  0000 C CNN
+F 1 "FET_N" H 9703 -3547 60  0000 C CNN
+F 2 "~" H 9850 -3300 60  0000 C CNN
+F 3 "~" H 9850 -3300 60  0000 C CNN
+	1    9850 -3300
+	0    -1   1    0   
+$EndComp
+$Comp
+L CP1 C?
+U 1 1 51BE5B22
+P -1650 6700
+F 0 "C?" H -1600 6800 50  0000 L CNN
+F 1 "CP1" H -1600 6600 50  0000 L CNN
+F 2 "~" H -1650 6700 60  0000 C CNN
+F 3 "~" H -1650 6700 60  0000 C CNN
+	1    -1650 6700
+	-1   0    0    1   
+$EndComp
+$Comp
+L CP1 C?
+U 1 1 51BE5B31
+P -1650 9900
+F 0 "C?" H -1600 10000 50  0000 L CNN
+F 1 "CP1" H -1600 9800 50  0000 L CNN
+F 2 "~" H -1650 9900 60  0000 C CNN
+F 3 "~" H -1650 9900 60  0000 C CNN
+	1    -1650 9900
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP1 C?
+U 1 1 51BE5B40
+P -150 8650
+F 0 "C?" H -100 8750 50  0000 L CNN
+F 1 "CP1" H -100 8550 50  0000 L CNN
+F 2 "~" H -150 8650 60  0000 C CNN
+F 3 "~" H -150 8650 60  0000 C CNN
+	1    -150 8650
 	0    -1   -1   0   
+$EndComp
+$Comp
+L RESISTOR R?
+U 1 1 51BE5B4F
+P -3000 9000
+F 0 "R?" V -3000 8900 50  0000 C CNN
+F 1 "RESISTOR" V -3000 9100 50  0000 C CNN
+F 2 "~" H -3000 9000 60  0000 C CNN
+F 3 "~" H -3000 9000 60  0000 C CNN
+	1    -3000 9000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L RESISTOR R?
+U 1 1 51BE5B5E
+P 0 10000
+F 0 "R?" V 0   9900 50  0000 C CNN
+F 1 "RESISTOR" V 0   10100 50  0000 C CNN
+F 2 "~" H 0   10000 60  0000 C CNN
+F 3 "~" H 0   10000 60  0000 C CNN
+	1    0    10000
+	1    0    0    -1  
+$EndComp
+$Comp
+L RESISTOR R?
+U 1 1 51BE5B6D
+P 250 10000
+F 0 "R?" V 250 9900 50  0000 C CNN
+F 1 "RESISTOR" V 250 10100 50  0000 C CNN
+F 2 "~" H 250 10000 60  0000 C CNN
+F 3 "~" H 250 10000 60  0000 C CNN
+	1    250  10000
+	1    0    0    -1  
+$EndComp
+$Comp
+L RESISTOR R?
+U 1 1 51BE5B7C
+P 500 10000
+F 0 "R?" V 500 9900 50  0000 C CNN
+F 1 "RESISTOR" V 500 10100 50  0000 C CNN
+F 2 "~" H 500 10000 60  0000 C CNN
+F 3 "~" H 500 10000 60  0000 C CNN
+	1    500  10000
+	1    0    0    -1  
+$EndComp
+$Comp
+L INDUCTOR L?
+U 1 1 51BE5B8B
+P -3700 8900
+F 0 "L?" V -3750 8900 40  0000 C CNN
+F 1 "INDUCTOR" V -3600 8900 40  0000 C CNN
+F 2 "~" H -3700 8900 60  0000 C CNN
+F 3 "~" H -3700 8900 60  0000 C CNN
+	1    -3700 8900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L DIODE D?
+U 1 1 51BE5B9A
+P -50 7800
+F 0 "D?" H -150 7750 40  0000 C CNN
+F 1 "DIODE" H -50 7850 40  0000 C CNN
+F 2 "~" H -50 7800 60  0000 C CNN
+F 3 "~" H -50 7800 60  0000 C CNN
+	1    -50  7800
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	5850 5300 8650 5300
@@ -3359,8 +3482,6 @@ Wire Wire Line
 Wire Wire Line
 	9400 -1800 9400 -2350
 Wire Wire Line
-	9400 -2350 10400 -2350
-Wire Wire Line
 	9500 -1800 9500 -2350
 Connection ~ 9500 -2350
 Wire Wire Line
@@ -3387,9 +3508,6 @@ Connection ~ 10200 -2350
 Wire Wire Line
 	10300 -1800 10300 -2350
 Connection ~ 10300 -2350
-Wire Wire Line
-	10400 -3000 10400 -1800
-Connection ~ 10400 -2350
 Wire Wire Line
 	7450 4450 7450 4550
 Wire Wire Line
@@ -3433,7 +3551,7 @@ Connection ~ 600  5300
 Connection ~ 600  2300
 Connection ~ 600  1550
 Wire Wire Line
-	11700 6050 -1050 6050
+	-1650 6050 11700 6050
 Connection ~ 7600 4550
 Wire Wire Line
 	7850 3800 7600 3800
@@ -3969,27 +4087,7 @@ Connection ~ 13350 3600
 Connection ~ 6150 2100
 Connection ~ 9400 -2350
 Wire Wire Line
-	-1050 6050 -1050 6900
-Wire Wire Line
 	600  6050 600  1550
-Connection ~ -1050 6900
-Connection ~ -650 7500
-Wire Wire Line
-	9350 -3400 21950 -3400
-Wire Wire Line
-	-650 7850 -650 7500
-Wire Wire Line
-	-650 8250 -650 13300
-Connection ~ -650 8250
-Connection ~ -650 7850
-Wire Wire Line
-	9350 -3400 9350 -3000
-Wire Wire Line
-	9350 -3000 9650 -3000
-Connection ~ 9650 -3000
-Wire Wire Line
-	10400 -3000 10150 -3000
-Connection ~ 10150 -3000
 Connection ~ 9400 -1300
 Connection ~ 9500 -1300
 Connection ~ 9600 -1300
@@ -4112,12 +4210,9 @@ Wire Wire Line
 Wire Wire Line
 	14700 4050 14700 -1000
 Wire Wire Line
-	17600 7700 16800 7700
+	16800 7700 17600 7700
 Wire Wire Line
-	16800 7700 16800 -2800
-Wire Wire Line
-	16800 -2800 10150 -2800
-Connection ~ 10150 -2800
+	16800 -3150 16800 7700
 Connection ~ 17600 7700
 Connection ~ 17600 7900
 Connection ~ 17600 8000
@@ -4278,7 +4373,7 @@ Wire Wire Line
 Wire Wire Line
 	16000 8900 17600 8900
 Wire Wire Line
-	21950 -3400 21950 8000
+	21950 -4350 21950 8000
 Wire Wire Line
 	21950 8000 20300 8000
 Connection ~ 20300 8000
@@ -4287,7 +4382,7 @@ Wire Wire Line
 Wire Wire Line
 	21150 7700 21150 13300
 Wire Wire Line
-	21150 13300 -650 13300
+	21150 13300 -1650 13300
 Wire Wire Line
 	17600 8700 17200 8700
 Wire Wire Line
@@ -4311,30 +4406,6 @@ Wire Wire Line
 Connection ~ 17600 8700
 Connection ~ 17600 8800
 Connection ~ 20300 7700
-$Comp
-L USB-MINI-B CON1
-U 1 1 51BB5678
-P 5000 -2300
-F 0 "CON1" H 4750 -1850 60  0000 C CNN
-F 1 "USB-MINI-B" H 4950 -2800 60  0000 C CNN
-F 2 "" H 5000 -2300 60  0000 C CNN
-F 3 "" H 5000 -2300 60  0000 C CNN
-	1    5000 -2300
-	1    0    0    -1  
-$EndComp
-Text Label 17600 7700 2    60   ~ 0
-GND
-$Comp
-L USB-MINI-B_EXT U1
-U 1 1 51BB56F7
-P 3600 -2300
-F 0 "U1" H 3600 -1850 60  0000 C CNN
-F 1 "USB-MINI-B_EXT" H 3600 -2800 60  0000 C CNN
-F 2 "" H 3600 -2300 60  0000 C CNN
-F 3 "" H 3600 -2300 60  0000 C CNN
-	1    3600 -2300
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4050 -2600 4450 -2600
 Wire Wire Line
@@ -4355,4 +4426,47 @@ Connection ~ 4050 -2450
 Connection ~ 4050 -2300
 Connection ~ 4050 -2150
 Connection ~ 4050 -2000
+Connection ~ 10200 -3150
+Connection ~ 9500 -3150
+Connection ~ 9850 -3600
+Wire Wire Line
+	9850 -3600 9850 -4350
+Wire Wire Line
+	9850 -4350 21950 -4350
+Wire Wire Line
+	-1650 13300 -1650 11100
+Connection ~ -1650 11100
+Connection ~ -1650 10700
+Wire Wire Line
+	-1650 10700 -1650 10100
+Connection ~ -1650 10100
+Wire Wire Line
+	-2500 8900 -3400 8900
+Connection ~ -2500 8900
+Connection ~ -2500 9000
+Connection ~ -3400 8900
+Connection ~ -4000 8900
+Connection ~ -3250 9000
+Connection ~ -2750 9000
+Wire Wire Line
+	-2500 9000 -2750 9000
+Wire Wire Line
+	-4000 8900 -4250 8900
+Wire Wire Line
+	-4250 9000 -3250 9000
+Wire Wire Line
+	-800 8650 -350 8650
+Connection ~ -350 8650
+Connection ~ -800 8650
+Connection ~ 50   8650
+Wire Wire Line
+	-1650 6050 -1650 6500
+Wire Wire Line
+	10300 -2350 9150 -2350
+Wire Wire Line
+	9150 -2350 9150 -3150
+Wire Wire Line
+	9150 -3150 9500 -3150
+Wire Wire Line
+	10200 -3150 16800 -3150
 $EndSCHEMATC
