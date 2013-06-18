@@ -8,6 +8,7 @@ In order to actually build this keep in mind you'd need access to the following.
 - CNC, laser or Waterjet cutting facility for fabrication.
 - Soldering iron and supplies.
 - A source for your switches, stabilizers and electronic components.
+- Somewhere to fabricate your pcb.
 
 #####The keyboard:
 
@@ -50,7 +51,3 @@ A bit of info on what this keyboard actually is. : )
 Thanks to the folks at http://deskthority.net/ for helping out when I had questions about measurements!
 Extra big thanks to BathroomEpiphanies.  Wouldn't have been able to do it without your amazing wiki.
 [Check it out here!](http://deskthority.net/wiki/KiCAD_keyboard_PCB_design_guide)
-
-
-Misc:
--This one http://www.mcmaster.com/#cadinlnord/91772a266/=n7mz56, will have to cut to size
