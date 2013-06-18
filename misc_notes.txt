@@ -3,7 +3,7 @@
 
 * Info on screws and inserts:
 Inserts - Fits 4.5mm hole drilled with 1/8" holes, http://www.mcmaster.com/#cadinlnord/94615a111/=n6z5nx
-Screws - Something from here probably, stainless steel or potentially nylon, http://www.mcmaster.com/#machine-screw-fasteners/=n6zd5c
+Screws - Something from here probably, http://www.mcmaster.com/#cadinlnord/91772a266/=n8mfs6
 All screw holes are 0.2355" from edge (corner, center of intersecting lines) of case and are 0.045" in radius.
 All insert holes are 0.2355" from edge (corner, center of intersecting lines) of case and are 0.0625" in radius.
 

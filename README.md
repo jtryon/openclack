@@ -48,7 +48,7 @@ A bit of info on what this keyboard actually is. : )
 
 #####Sources/Thanks:
 Thanks to the folks at http://deskthority.net/ for helping out when I had questions about measurements!
-Extra big thanks to BathroomEpiphanies for their amazing wiki which got me started on this.  Wouldn't have been able to do it without your amazing wiki.
+Extra big thanks to BathroomEpiphanies.  Wouldn't have been able to do it without your amazing wiki.
 [Check it out here!](http://deskthority.net/wiki/KiCAD_keyboard_PCB_design_guide)
 
 
