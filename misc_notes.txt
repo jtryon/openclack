@@ -4,6 +4,7 @@
 * Info on screws and inserts:
 Inserts - Fits 4.5mm hole drilled with 1/8" holes, http://www.mcmaster.com/#cadinlnord/94615a111/=n6z5nx
 //changed: http://www.reidsupply.com/sku/EZ-600/
+//changed again: https://www.acklandsgrainger.com/AGIPortalWeb/WebSource/ProductDisplay/globalProductDetailDisplay.do?item_code=WWG1GUC6
 
 Screws - Something from here probably, http://www.mcmaster.com/#cadinlnord/91772a266/=n8mfs6
 //changed: 

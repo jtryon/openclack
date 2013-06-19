@@ -35,7 +35,9 @@ A bit of info on what this keyboard actually is. : )
  - A few screenshots showing a rough draft of the pcb and case design.  These are NOT 100% accurate representations.  The CAD files are though.  These are just for a bit of reference and eyeballing.
 - 3D_mockup.skp
  - I exported all my DXFs to SketchUp and then did some rough modelling.  This isn't 100% accuracte either (pretty close though).  It's meant to give a rough idea and help eyeball some potential problems.
-
+- /inkscape_plots/*
+ - These are ready to go files for an online fabrication site: https://www.ponoko.com/
+ 
 #####Progress:
 
 - [ ] PCB
