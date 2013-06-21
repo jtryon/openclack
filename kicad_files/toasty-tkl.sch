@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 16/06/2013 8:00:48 PM
+EESchema Schematic File Version 2  date 20/06/2013 6:29:09 PM
 LIBS:components
 LIBS:toasty-tkl-cache
 EELAYER 27 0
@@ -7,7 +7,7 @@ $Descr User 16535 7283
 encoding utf-8
 Sheet 1 1
 Title "Toasty TKL"
-Date "17 jun 2013"
+Date "21 jun 2013"
 Rev "REV 1A"
 Comp ""
 Comment1 ""
@@ -2349,35 +2349,35 @@ $EndComp
 $Comp
 L RESISTOR R?
 U 1 1 51BE5B5E
-P 0 10000
-F 0 "R?" V 0   9900 50  0000 C CNN
-F 1 "RESISTOR" V 0   10100 50  0000 C CNN
-F 2 "~" H 0   10000 60  0000 C CNN
-F 3 "~" H 0   10000 60  0000 C CNN
-	1    0    10000
-	1    0    0    -1  
+P -900 9500
+F 0 "R?" V -900 9400 50  0000 C CNN
+F 1 "RESISTOR" V -900 9600 50  0000 C CNN
+F 2 "~" H -900 9500 60  0000 C CNN
+F 3 "~" H -900 9500 60  0000 C CNN
+	1    -900 9500
+	0    -1   -1   0   
 $EndComp
 $Comp
 L RESISTOR R?
 U 1 1 51BE5B6D
-P 250 10000
-F 0 "R?" V 250 9900 50  0000 C CNN
-F 1 "RESISTOR" V 250 10100 50  0000 C CNN
-F 2 "~" H 250 10000 60  0000 C CNN
-F 3 "~" H 250 10000 60  0000 C CNN
-	1    250  10000
-	1    0    0    -1  
+P -3650 8600
+F 0 "R?" V -3650 8500 50  0000 C CNN
+F 1 "RESISTOR" V -3650 8700 50  0000 C CNN
+F 2 "~" H -3650 8600 60  0000 C CNN
+F 3 "~" H -3650 8600 60  0000 C CNN
+	1    -3650 8600
+	0    -1   -1   0   
 $EndComp
 $Comp
 L RESISTOR R?
 U 1 1 51BE5B7C
-P 500 10000
-F 0 "R?" V 500 9900 50  0000 C CNN
-F 1 "RESISTOR" V 500 10100 50  0000 C CNN
-F 2 "~" H 500 10000 60  0000 C CNN
-F 3 "~" H 500 10000 60  0000 C CNN
-	1    500  10000
-	1    0    0    -1  
+P -850 11550
+F 0 "R?" V -850 11450 50  0000 C CNN
+F 1 "RESISTOR" V -850 11650 50  0000 C CNN
+F 2 "~" H -850 11550 60  0000 C CNN
+F 3 "~" H -850 11550 60  0000 C CNN
+	1    -850 11550
+	0    -1   -1   0   
 $EndComp
 $Comp
 L INDUCTOR L?
@@ -2393,13 +2393,13 @@ $EndComp
 $Comp
 L DIODE D?
 U 1 1 51BE5B9A
-P -50 7800
-F 0 "D?" H -150 7750 40  0000 C CNN
-F 1 "DIODE" H -50 7850 40  0000 C CNN
-F 2 "~" H -50 7800 60  0000 C CNN
-F 3 "~" H -50 7800 60  0000 C CNN
-	1    -50  7800
-	1    0    0    -1  
+P -1650 7400
+F 0 "D?" H -1750 7350 40  0000 C CNN
+F 1 "DIODE" H -1650 7450 40  0000 C CNN
+F 2 "~" H -1650 7400 60  0000 C CNN
+F 3 "~" H -1650 7400 60  0000 C CNN
+	1    -1650 7400
+	0    -1   -1   0   
 $EndComp
 Wire Wire Line
 	5850 5300 8650 5300
@@ -4469,4 +4469,81 @@ Wire Wire Line
 	9150 -3150 9500 -3150
 Wire Wire Line
 	10200 -3150 16800 -3150
+Wire Wire Line
+	-1650 9700 -1650 9300
+Connection ~ -1650 9700
+Connection ~ -1650 9300
+Wire Wire Line
+	-1650 9500 -1150 9500
+Connection ~ -1650 9500
+Wire Wire Line
+	-650 9500 -400 9500
+Wire Wire Line
+	-400 8950 -400 10300
+Wire Wire Line
+	-400 8950 -800 8950
+Connection ~ -650 9500
+Connection ~ -1150 9500
+Connection ~ -800 8950
+Connection ~ -400 9500
+Wire Wire Line
+	-4250 7750 -4250 10300
+Wire Wire Line
+	-4250 10300 -400 10300
+Connection ~ -4250 9000
+Wire Wire Line
+	-4250 7750 -1650 7750
+Wire Wire Line
+	-1650 7750 -1650 7600
+Connection ~ -4250 8900
+Wire Wire Line
+	-1650 7200 -1650 6900
+Connection ~ -1650 6900
+Connection ~ -1650 7200
+Wire Wire Line
+	-2500 8600 -3400 8600
+Wire Wire Line
+	-3900 8600 -4750 8600
+Wire Wire Line
+	-4750 8600 -4750 7050
+Wire Wire Line
+	-4750 7050 -1650 7050
+Connection ~ -1650 7050
+Connection ~ -3900 8600
+Connection ~ -3400 8600
+Wire Wire Line
+	0    14150 16500 14150
+Wire Wire Line
+	16500 14150 16500 7500
+Wire Wire Line
+	16500 7500 16800 7500
+Connection ~ 16800 7500
+$Comp
+L CP1 C?
+U 1 1 51C3F6C2
+P 0 10500
+F 0 "C?" H 50  10600 50  0000 L CNN
+F 1 "CP1" H 50  10400 50  0000 L CNN
+F 2 "~" H 0   10500 60  0000 C CNN
+F 3 "~" H 0   10500 60  0000 C CNN
+	1    0    10500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	-3000 8600 -3000 11550
+Connection ~ -3000 8600
+Wire Wire Line
+	-3000 11550 -1100 11550
+Wire Wire Line
+	-600 11550 0    11550
+Wire Wire Line
+	0    10700 0    14150
+Connection ~ 0    11550
+Wire Wire Line
+	-2500 8750 -4550 8750
+Wire Wire Line
+	-4550 8750 -4550 11800
+Wire Wire Line
+	-4550 11800 0    11800
+Connection ~ 0    11800
 $EndSCHEMATC

@@ -1,4 +1,4 @@
-update=17/06/2013 9:35:48 PM
+update=19/06/2013 5:01:57 PM
 last_client=pcbnew
 [general]
 version=1
@@ -37,4 +37,3 @@ ModuleOutlineThickness=0.150000000000
 [pcbnew/libraries]
 LibDir=
 LibName1=footprints
-LibName2=C:/Users/Toast/Desktop/toastytkltag
