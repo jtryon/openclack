@@ -1,4 +1,4 @@
-update=23/06/2013 2:41:11 PM
+update=24/06/2013 4:42:32 PM
 last_client=pcbnew
 [general]
 version=1
@@ -37,8 +37,3 @@ ModuleOutlineThickness=0.150000000000
 [pcbnew/libraries]
 LibDir=
 LibName1=footprints
-LibName2=smd_capacitors
-LibName3=smd_dil
-LibName4=smd_resistors
-LibName5=smd_transistors
-LibName6=capacitors

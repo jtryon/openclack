@@ -1,38 +1,73 @@
-Cmp-Mod V01 Created by CvPcb (2013-04-19 BZR 4011)-stable date = 23/06/2013 4:53:44 PM
+Cmp-Mod V01 Created by CvPcb (2013-05-31 BZR 4019)-stable date = 24/06/2013 4:44:37 PM
 
 BeginCmp
-TimeStamp = /51BE5B4F;
-Reference = BCR0;
-ValeurCmp = RESISTOR;
-IdModule  = ;
+TimeStamp = /51C3F6C2;
+Reference = BC_Co1;
+ValeurCmp = CP1;
+IdModule  = TantalC_SizeD_EIA-7343_HandSoldering_RevA_28Aug2012;
 EndCmp
 
 BeginCmp
-TimeStamp = /51BE5B7C;
-Reference = BCR1;
-ValeurCmp = RESISTOR;
-IdModule  = ;
-EndCmp
-
-BeginCmp
-TimeStamp = /51BE5B6D;
-Reference = BCR2;
-ValeurCmp = RESISTOR;
-IdModule  = ;
+TimeStamp = /51BE5B40;
+Reference = BC_Ct1;
+ValeurCmp = CP1;
+IdModule  = TantalC_SizeD_EIA-7343_HandSoldering_RevA_28Aug2012;
 EndCmp
 
 BeginCmp
 TimeStamp = /51BE5B31;
-Reference = C0;
+Reference = BC_Cvcc1;
 ValeurCmp = CP1;
-IdModule  = ;
+IdModule  = CP_6mm;
 EndCmp
 
 BeginCmp
-TimeStamp = /51C3F6C2;
-Reference = Co0;
-ValeurCmp = CP1;
-IdModule  = TantalC_SizeD_EIA-7343_HandSoldering_RevA_28Aug2012;
+TimeStamp = /51BE5B9A;
+Reference = BC_D1;
+ValeurCmp = DIODE;
+IdModule  = DO-41;
+EndCmp
+
+BeginCmp
+TimeStamp = /519CE3F5;
+Reference = BC_F1;
+ValeurCmp = FUSE;
+IdModule  = MQ750;
+EndCmp
+
+BeginCmp
+TimeStamp = /51BE5B8B;
+Reference = BC_L1;
+ValeurCmp = INDUCTOR;
+IdModule  = SCRH103R;
+EndCmp
+
+BeginCmp
+TimeStamp = /51BE5B4F;
+Reference = BC_R0;
+ValeurCmp = RESISTOR;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /51BE5B7C;
+Reference = BC_R1;
+ValeurCmp = RESISTOR;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /51BE5B6D;
+Reference = BC_R2;
+ValeurCmp = RESISTOR;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /51BE5B5E;
+Reference = BC_Rsc1;
+ValeurCmp = RESISTOR;
+IdModule  = R4;
 EndCmp
 
 BeginCmp
@@ -40,13 +75,6 @@ TimeStamp = /51BB5678;
 Reference = CON1;
 ValeurCmp = USB-MINI-B;
 IdModule  = conn_usb_B_mini_smd;
-EndCmp
-
-BeginCmp
-TimeStamp = /51BE5B40;
-Reference = Ct0;
-ValeurCmp = CP1;
-IdModule  = CP_6mm_disc;
 EndCmp
 
 BeginCmp
@@ -278,13 +306,6 @@ TimeStamp = /518BFCE6;
 Reference = D1:15;
 ValeurCmp = D;
 IdModule  = D3;
-EndCmp
-
-BeginCmp
-TimeStamp = /51BE5B9A;
-Reference = D2;
-ValeurCmp = DIODE;
-IdModule  = ;
 EndCmp
 
 BeginCmp
@@ -680,24 +701,10 @@ IdModule  = D3;
 EndCmp
 
 BeginCmp
-TimeStamp = /519CE3F5;
-Reference = F1;
-ValeurCmp = FUSE;
-IdModule  = MQ750;
-EndCmp
-
-BeginCmp
-TimeStamp = /51BE5B8B;
-Reference = L0;
-ValeurCmp = INDUCTOR;
-IdModule  = ;
-EndCmp
-
-BeginCmp
 TimeStamp = /51BE4888;
 Reference = Q1;
 ValeurCmp = FET_N;
-IdModule  = ;
+IdModule  = SOT23;
 EndCmp
 
 BeginCmp
@@ -789,13 +796,6 @@ TimeStamp = /519C4481;
 Reference = R12;
 ValeurCmp = RESISTOR;
 IdModule  = R3;
-EndCmp
-
-BeginCmp
-TimeStamp = /51BE5B5E;
-Reference = Rsc1;
-ValeurCmp = RESISTOR;
-IdModule  = ;
 EndCmp
 
 BeginCmp
