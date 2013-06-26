@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  Date: 16/06/2013 4:10:14 PM
+EESchema-DOCLIB  Version 2.0  Date: 16/06/2013 4:14:20 PM
 #
 $CMP CP1
 D Condensateur polarise
@@ -9,6 +9,10 @@ D FQPF13N06L
 $ENDCMP
 #
 $CMP FUSE
+D FUSE
+$ENDCMP
+#
+$CMP FUSE_GENERIC
 D FUSE
 $ENDCMP
 #
