@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 25/06/2013 8:46:32 PM
+EESchema Schematic File Version 2
 LIBS:components
 LIBS:toasty-tkl-cache
 EELAYER 27 0
@@ -7,7 +7,7 @@ $Descr User 16535 7283
 encoding utf-8
 Sheet 1 1
 Title "Toasty TKL"
-Date "24 jun 2013"
+Date "27 jun 2013"
 Rev "REV 1A"
 Comp ""
 Comment1 ""
@@ -4449,7 +4449,7 @@ Wire Wire Line
 	-4250 9000 -3250 9000
 Connection ~ -800 8650
 Wire Wire Line
-	10300 -2350 9150 -2350
+	9150 -2350 10400 -2350
 Wire Wire Line
 	9150 -2350 9150 -3150
 Wire Wire Line
@@ -4557,4 +4557,6 @@ Connection ~ -1650 10600
 Connection ~ -2050 12400
 Connection ~ -2050 12800
 Connection ~ -650 8650
+Wire Wire Line
+	10400 -2350 10400 -1800
 $EndSCHEMATC
