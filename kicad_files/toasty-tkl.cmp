@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-05-31 BZR 4019)-stable date = 24/06/2013 4:44:37 PM
+Cmp-Mod V01 Created by CvPcb (2013-05-31 BZR 4019)-stable date = 28/06/2013 4:25:31 PM
 
 BeginCmp
 TimeStamp = /51C3F6C2;
@@ -11,14 +11,14 @@ BeginCmp
 TimeStamp = /51BE5B40;
 Reference = BC_Ct1;
 ValeurCmp = CP1;
-IdModule  = TantalC_SizeD_EIA-7343_HandSoldering_RevA_28Aug2012;
+IdModule  = CP_6mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /51BE5B31;
 Reference = BC_Cvcc1;
 ValeurCmp = CP1;
-IdModule  = CP_6mm;
+IdModule  = TantalC_SizeD_EIA-7343_HandSoldering_RevA_28Aug2012;
 EndCmp
 
 BeginCmp

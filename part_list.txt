@@ -1,0 +1,15 @@
+?	KiCad Module			Kicad Ref				URL																						Thickness	Kicad Footprint
+===================================================================================================================================================================================================
+Y	BC_Co					CP1						http://www.digikey.ca/product-detail/en/TR3D476K025C0150/718-1525-1-ND/1860000          3.10mm		TantalC_SizeD_EIA-7343_HandSoldering_RevA_28Aug2012
+Y	BC_Ct					CP1						http://www.digikey.ca/product-detail/en/C410C102K1R5TA7200/399-4450-1-ND/818307         2.54mm      CP_6mm
+Y	BC_Cvvc					CP1						http://www.digikey.ca/product-detail/en/RVA0J101MNG/493-6670-1-ND/3465996               3.00mm      TantalC_SizeD_EIA-7343_HandSoldering_RevA_28Aug2012
+Y	BC_L					INDUCTOR				http://www.digikey.ca/product-detail/en/SCRH103R-101/595-1406-1-ND/2771443              3.10mm      SCRH103R
+Y	BC_R					RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT180R/CF18JT180RCT-ND/2022724              1.70mm 		R3
+Y	R1						RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT3K60/CF18JT3K60CT-ND/2022755              1.70mm      R3
+Y	R2						RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT51K0/CF18JT51K0CT-ND/2022783              1.70mm      R3
+	Rsc						RESISTOR				http://www.digikey.ca/product-detail/en/1622602-1/A105966CT-ND/3477549                  2.30mm      R4
+	Schottky D										http://www.digikey.ca/product-detail/en/1N5818-T/1N5818DITR-ND/22054                    2.72mm      DO-41
+	BoostCvrtr										http://www.digikey.ca/product-detail/en/MC34063ACD-TR/497-7850-1-ND/1883654             1.75mm      so-8
+	FET												http://www.digikey.ca/product-detail/en/IRLML2060TRPBF/IRLML2060TRPBFCT-ND/2271917		1.12mm      SOT23
+	FUSE:											http://www.digikey.ca/product-detail/en/0251.750MXL/F2353-ND/776753						3.18mm		MQ750 (double check size)
+	LED:											http://www.digikey.ca/product-detail/en/OVLBR4C7/365-1175-ND/827111
