@@ -9,9 +9,6 @@ http://www.nomad.ee/micros/mc34063a/
 teensy 2.0++ typical current draw 60.2 mA
 boost converter efficiency is aprox 80%+
 
-Revised Part List:
-===========================
-
 LED CALC Results (8 series):
 Calculated resistance:	200O
 Nearest lower 5% resistor:	180O
@@ -31,6 +28,16 @@ Recommended resistor Wattage:	1/8 W
 Power consumed by the LEDs (PLED):	107.8 mW
 Total power consumption (PTotal):	133 mW
 Efficiency (PLED/PTotal) x 100 :	81.05 %
+
+LED CALC Results (individual indicator LEDs):
+Calculated resistance:	2.8kO
+Nearest lower 5% resistor:	2.7kO*
+Nearest higher 5% resistor:	3kO
+Power dissipated by the resistor:	2.8 mW
+Recommended resistor Wattage:	1/8 W
+Power consumed by the LED (PLED):	2.2 mW
+Total power consumption (PTotal):	5 mW
+Efficiency (PLED/PTotal) x 100 :	44 %
 
 MC34063A CALC Results:
 Ct=626 pF		(above 700 pf cap)

@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-05-31 BZR 4019)-stable date = 28/06/2013 4:25:31 PM
+Cmp-Mod V01 Created by CvPcb (2013-04-19 BZR 4011)-stable date = 01/07/2013 3:16:05 PM
 
 BeginCmp
 TimeStamp = /51C3F6C2;
@@ -80,7 +80,7 @@ EndCmp
 BeginCmp
 TimeStamp = /518D7F7C;
 Reference = D0;
-ValeurCmp = LED 0;
+ValeurCmp = LED;
 IdModule  = LED-3MM;
 EndCmp
 
@@ -192,7 +192,7 @@ EndCmp
 BeginCmp
 TimeStamp = /518D7FDB;
 Reference = D1;
-ValeurCmp = LED 1;
+ValeurCmp = LED;
 IdModule  = LED-3MM;
 EndCmp
 
@@ -701,6 +701,20 @@ IdModule  = D3;
 EndCmp
 
 BeginCmp
+TimeStamp = /518D7F68;
+Reference = LED_R0;
+ValeurCmp = RESISTOR;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /518D7FD5;
+Reference = LED_R1;
+ValeurCmp = RESISTOR;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
 TimeStamp = /51BE4888;
 Reference = Q1;
 ValeurCmp = FET_N;
@@ -708,92 +722,78 @@ IdModule  = SOT23;
 EndCmp
 
 BeginCmp
-TimeStamp = /518D7F68;
+TimeStamp = /519C4404;
 Reference = R0;
-ValeurCmp = RESISTOR 0;
-IdModule  = R3;
-EndCmp
-
-BeginCmp
-TimeStamp = /518D7FD5;
-Reference = R1;
-ValeurCmp = RESISTOR 1;
-IdModule  = R3;
-EndCmp
-
-BeginCmp
-TimeStamp = /519C4382;
-Reference = R2;
-ValeurCmp = RESISTOR;
-IdModule  = R3;
-EndCmp
-
-BeginCmp
-TimeStamp = /519C4391;
-Reference = R3;
-ValeurCmp = RESISTOR;
-IdModule  = R3;
-EndCmp
-
-BeginCmp
-TimeStamp = /519C43B9;
-Reference = R4;
-ValeurCmp = RESISTOR;
-IdModule  = R3;
-EndCmp
-
-BeginCmp
-TimeStamp = /519C43D2;
-Reference = R5;
 ValeurCmp = RESISTOR;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
 TimeStamp = /519C43EB;
-Reference = R6;
+Reference = R1;
 ValeurCmp = RESISTOR;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
-TimeStamp = /519C4404;
-Reference = R7;
+TimeStamp = /519C43D2;
+Reference = R2;
+ValeurCmp = RESISTOR;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /519C43B9;
+Reference = R3;
+ValeurCmp = RESISTOR;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /519C4391;
+Reference = R4;
+ValeurCmp = RESISTOR;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /519C4382;
+Reference = R5;
 ValeurCmp = RESISTOR;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
 TimeStamp = /519C441D;
-Reference = R8;
+Reference = R6;
 ValeurCmp = RESISTOR;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
 TimeStamp = /519C4436;
-Reference = R9;
+Reference = R7;
 ValeurCmp = RESISTOR;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
 TimeStamp = /519C444F;
-Reference = R10;
+Reference = R8;
 ValeurCmp = RESISTOR;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
 TimeStamp = /519C4468;
-Reference = R11;
+Reference = R9;
 ValeurCmp = RESISTOR;
 IdModule  = R3;
 EndCmp
 
 BeginCmp
 TimeStamp = /519C4481;
-Reference = R12;
+Reference = R10;
 ValeurCmp = RESISTOR;
 IdModule  = R3;
 EndCmp
