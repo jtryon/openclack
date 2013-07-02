@@ -19,3 +19,5 @@ Quantity Sug.		Okay?		KiCad Module			Kicad Ref				URL																						Thick
 10					Y			D0,D1					LED						http://www.digikey.ca/product-detail/en/OVLBY4C7/365-1176-ND/827112									LED-3MM
 2					Y			LED_R0,LED_R1			RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT2K70/CF18JT2K70CT-ND/2022752							R3
 1					Y			USB-MINI-B				CON1					http://www.digikey.ca/product-detail/en/USB-M26FTR/ED2992CT-ND/2677756								conn_usb_B_mini_smd
+?					?			N/A						N/A						?need to find space pin things kev was talking about for teensy?
+?					?			N/A						N/A						?some of that fancy non conductive tape kev talked about too?
