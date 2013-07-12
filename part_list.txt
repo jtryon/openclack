@@ -2,7 +2,7 @@ Quantity Sug.		Okay?		KiCad Module			Kicad Ref				URL																						Thick
 =============================================================================================================================================================================================================================
 1					Y			BC_Co1					CP1						http://www.digikey.ca/product-detail/en/TR3D476K025C0150/718-1525-1-ND/1860000          3.10mm		TantalC_SizeD_EIA-7343_HandSoldering_RevA_28Aug2012
 1					Y			BC_Ct1					CP1						http://www.digikey.ca/product-detail/en/C410C102K1R5TA7200/399-4450-1-ND/818307         2.54mm      CP_6mm
-1					Y			BC_Cvvc1				CP1						http://www.digikey.ca/product-detail/en/RVA0J101MNG/493-6670-1-ND/3465996               3.00mm      TantalC_SizeD_EIA-7343_HandSoldering_RevA_28Aug2012
+1					Y			BC_Cvcc1				CP1						http://www.digikey.ca/product-detail/en/RVA0J101MNG/493-6670-1-ND/3465996               3.00mm      TantalC_SizeD_EIA-7343_HandSoldering_RevA_28Aug2012
 1					Y			BC_L1					INDUCTOR				http://www.digikey.ca/product-detail/en/SCRH103R-101/595-1406-1-ND/2771443              3.10mm      SCRH103R
 1					Y			BC_R0					RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT180R/CF18JT180RCT-ND/2022724              1.70mm 		R3
 1					Y			BC_R1					RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT3K60/CF18JT3K60CT-ND/2022755              1.70mm      R3
