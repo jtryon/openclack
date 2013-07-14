@@ -1,4 +1,4 @@
-update=24/06/2013 4:42:32 PM
+update=14/07/2013 3:15:04 PM
 last_client=pcbnew
 [general]
 version=1
@@ -19,10 +19,10 @@ LibName1=components
 version=1
 LastNetListRead=toasty-tkl.net
 UseCmpFile=1
-PadDrill=0.812800000000
-PadDrillOvalY=0.812800000000
-PadSizeH=1.676400000000
-PadSizeV=1.676400000000
+PadDrill=0.000000000000
+PadDrillOvalY=0.000000000000
+PadSizeH=2.000000000000
+PadSizeV=3.200000000000
 PcbTextSizeV=1.500000000000
 PcbTextSizeH=1.500000000000
 PcbTextThickness=0.300000000000

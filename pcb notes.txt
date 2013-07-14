@@ -1,3 +1,0 @@
-PD6 pin on teensy has an LED and resistor, will pull the current high.  You need to either remove the LED or move the pin somewhere else.
-
-Add ohms impedence etc to the value fields of boost converter.
