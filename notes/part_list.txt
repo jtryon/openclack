@@ -7,8 +7,8 @@ Quantity Sug.		Okay?		KiCad Module			Kicad Ref				URL																						Thick
 1					Y			BC_R0					RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT180R/CF18JT180RCT-ND/2022724              1.70mm 		R3
 1					Y			BC_R1					RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT3K60/CF18JT3K60CT-ND/2022755              1.70mm      R3
 1					Y			BC_R2					RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT51K0/CF18JT51K0CT-ND/2022783              1.70mm      R3
-1					?>.3omh		BC_Rsc1					RESISTOR				http://www.digikey.ca/product-detail/en/1622602-1/A105966CT-ND/3477549                  2.30mm      R4
-1					Y			BC_D1					DIODE					http://www.digikey.ca/product-detail/en/1N5818-T/1N5818DITR-ND/22054                    2.72mm      DO-41
+1					Y			BC_Rsc1					RESISTOR				http://www.digikey.ca/product-detail/en/1622602-1/A105966CT-ND/3477549                  2.30mm      R4
+1					Y			BC_D1					DIODE					http://www.digikey.ca/product-detail/en/1N5818-T/1N5818DICT-ND/190657                   2.72mm      DO-41
 1					Y			VREG1					MC34063ABN				http://www.digikey.ca/product-detail/en/MC34063ACD-TR/497-7850-1-ND/1883654             1.75mm      so-8
 1					Y			Q1						FET_N					http://www.digikey.ca/product-detail/en/IRLML2060TRPBF/IRLML2060TRPBFCT-ND/2271917		1.12mm      SOT23
 2 (1 backup)		Y			BC_F1					FUSE					http://www.digikey.ca/product-detail/en/0251.750MXL/F2353-ND/776753						3.18mm		MQ750 (double check size)
@@ -16,8 +16,8 @@ Quantity Sug.		Okay?		KiCad Module			Kicad Ref				URL																						Thick
 100					Y			Dx:x					DIODE					http://www.digikey.ca/product-detail/en/1N4148,113/568-1360-1-ND/763357								D3
 10					Y			R0-9					RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT180R/CF18JT180RCT-ND/2022724							R3
 1					Y			R10						RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT510R/CF18JT510RCT-ND/2022735							R3
-10					Y			D0,D1					LED						http://www.digikey.ca/product-detail/en/OVLBY4C7/365-1176-ND/827112									LED-3MM
+4					Y			D0,D1					LED						http://www.digikey.ca/product-detail/en/OVLBY4C7/365-1176-ND/827112									LED-3MM
 2					Y			LED_R0,LED_R1			RESISTOR				http://www.digikey.ca/product-detail/en/CF18JT2K70/CF18JT2K70CT-ND/2022752							R3
 1					Y			USB-MINI-B				CON1					http://www.digikey.ca/product-detail/en/USB-M26FTR/ED2992CT-ND/2677756								conn_usb_B_mini_smd
-?					?			N/A						N/A						?need to find space pin things kev was talking about for teensy?
-?					?			N/A						N/A						?some of that fancy non conductive tape kev talked about too?
+4					Y			N/A						N/A						http://www.digikey.ca/product-detail/en/PRPC040SAAN-RC/S1011EC-40-ND/2775214
+?					?			N/A						N/A						capton tape, overpriced as ffff* don't buy on digikey, find local source

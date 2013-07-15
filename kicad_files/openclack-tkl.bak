@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2
+EESchema Schematic File Version 2  date 14/07/2013 9:27:58 PM
 LIBS:components
 LIBS:toasty-tkl-cache
 EELAYER 27 0
@@ -3958,4 +3958,5 @@ Wire Wire Line
 	17000 8000 17600 8000
 Wire Wire Line
 	9850 -4350 17000 -4350
+Connection ~ 6850 2450
 $EndSCHEMATC
