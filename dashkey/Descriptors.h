@@ -56,6 +56,10 @@
 			USB_HID_Descriptor_HID_t              HID2_MacroHID;
 			USB_Descriptor_Endpoint_t             HID2_ReportINEndpoint;
 			USB_Descriptor_Endpoint_t             HID2_ReportOUTEndpoint;
+			USB_Descriptor_Interface_t            HID3_MediaInterface;
+			USB_HID_Descriptor_HID_t              HID3_MediaHID;
+			USB_Descriptor_Endpoint_t             HID3_ReportINEndpoint;
+
 		} USB_Descriptor_Configuration_t;
 
 
@@ -83,6 +87,10 @@
 		/** Endpoint number of the macro reporting OUT endpoint. */
 		#define MACRO_OUT_EPADDR              (ENDPOINT_DIR_OUT | 3)
 
+		/** Endpoint number of the media key IN endpoint. */
+		#define MEDIA_EPADDR              (ENDPOINT_DIR_IN | 4)
+
+
 		/** Size in bytes of each of the HID reporting IN. */
 		#define HID_EPSIZE                32
 
@@ -91,14 +99,18 @@
 		enum
 		{
 			KEYBOARD_REPORTID_KeyboardReport = 0x01, /**< Report ID for the Keyboard report within the device. */
-			KEYBOARD_REPORTID_MediaReport = 0x02, /**< Report ID for the Media controller report within the device. */
 		} KEYBOARD_Report_IDs;
 
 		enum
 		{
+		MEDIA_REPORTID_MediaReport = 0x01, /**< Report ID for the Media controller report within the device. */
+		} MEDIA_Report_IDs;
+
+		enum
+		{
 			MACRO_REPORTID_KeyboardReport = 0x01, /**< Report ID for the Keyboard report within the device. */
-			MACRO_REPORTID_MacroReport = 0x02, /**< Report ID for the LCD display */
-			MACRO_REPORTID_LCDReport = 0x03, /**< Report ID for the G15 macro keys */
+			MACRO_REPORTID_MacroReport = 0x02, /**< Report ID for the G15 macro keys*/
+			MACRO_REPORTID_LCDReport = 0x03, /**< Report ID for the LCD report */
 		} MACRO_Report_IDs;
 
 	/* Function Prototypes: */

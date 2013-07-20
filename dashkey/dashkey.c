@@ -114,10 +114,14 @@ uint8_t frame_update = 0; //#counter tracking timing for animation updates. 5ms 
 AppPtr_t BootStartPtr = (AppPtr_t)0x7000;
 
 /** Buffer to hold the previously generated Keyboard HID report, for comparison purposes inside the HID class driver. */
-static uint8_t PrevKeyboardHIDReportBuffer[MAX(sizeof(USB_KeyboardReport_Data_t), sizeof(USB_MediaReport_Data_t))];
+static uint8_t PrevKeyboardHIDReportBuffer[sizeof(USB_KeyboardReport_Data_t)];
 
 /** Buffer to hold the previously generated Keyboard HID report, for comparison purposes inside the HID class driver. */
 static uint8_t PrevMacroHIDReportBuffer[sizeof(USB_MacroReport_Data_t)];
+
+/** Buffer to hold the previously generated Keyboard HID report, for comparison purposes inside the HID class driver. */
+static uint8_t PrevMediaHIDReportBuffer[sizeof(USB_MediaReport_Data_t)];
+
 
 /** LUFA HID Class driver interface configuration and state information. This structure is
  *  passed to all HID Class driver functions, so that multiple instances of the same class
@@ -158,6 +162,27 @@ USB_ClassInfo_HID_Device_t Macro_HID_Interface =
 
 				.PrevReportINBuffer           = PrevMacroHIDReportBuffer,
 				.PrevReportINBufferSize       = sizeof(PrevMacroHIDReportBuffer),
+			},
+    };
+
+/** LUFA HID Class driver interface configuration and state information. This structure is
+ *  passed to all HID Class driver functions, so that multiple instances of the same class
+ *  within a device can be differentiated from one another.
+ */
+USB_ClassInfo_HID_Device_t Media_HID_Interface =
+ 	{
+		.Config =
+			{
+				.InterfaceNumber              = 0,
+
+				{
+					.Address              = MEDIA_EPADDR,
+					.Size                 = HID_EPSIZE,
+					.Banks                = 1,
+				},
+
+				.PrevReportINBuffer           = PrevMediaHIDReportBuffer,
+				.PrevReportINBufferSize       = sizeof(PrevMediaHIDReportBuffer),
 			},
     };
 
@@ -203,6 +228,7 @@ int main(void)
 	{
 		HID_Device_USBTask(&Keyboard_HID_Interface);
 		HID_Device_USBTask(&Macro_HID_Interface);
+		HID_Device_USBTask(&Media_HID_Interface);
 		USB_USBTask();
 		process_keys();
 #ifdef LED_MATRIX_SUPPORT
@@ -661,6 +687,7 @@ void EVENT_USB_Device_ConfigurationChanged(void)
 	//ConfigSuccess &= HID_Device_ConfigureEndpoints(&Device_HID_Interface);
 	ConfigSuccess &= HID_Device_ConfigureEndpoints(&Keyboard_HID_Interface);
 	ConfigSuccess &= HID_Device_ConfigureEndpoints(&Macro_HID_Interface);
+	ConfigSuccess &= HID_Device_ConfigureEndpoints(&Media_HID_Interface);
 
 	USB_Device_EnableSOFEvents();
 
@@ -672,6 +699,7 @@ void EVENT_USB_Device_ControlRequest(void)
 {
 	HID_Device_ProcessControlRequest(&Keyboard_HID_Interface);
 	HID_Device_ProcessControlRequest(&Macro_HID_Interface);
+	HID_Device_ProcessControlRequest(&Media_HID_Interface);
 }
 
 /** Event handler for the USB device Start Of Frame event. */
@@ -680,6 +708,7 @@ void EVENT_USB_Device_StartOfFrame(void)
 	//HID_Device_MillisecondElapsed(&Device_HID_Interface);
 	HID_Device_MillisecondElapsed(&Keyboard_HID_Interface);
 	HID_Device_MillisecondElapsed(&Macro_HID_Interface);
+	HID_Device_MillisecondElapsed(&Media_HID_Interface);
 }
 
 /** HID class driver callback function for the creation of HID reports to the host.
@@ -698,16 +727,16 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 	uint8_t  keycodeiterate = 0;
 	uint8_t  innermatrix = 0;
 
-	if (HIDInterfaceInfo == &Keyboard_HID_Interface) {
+	if (HIDInterfaceInfo == &Keyboard_HID_Interface || HIDInterfaceInfo == &Media_HID_Interface ) { //Do our usual matrix calculations if we're sending a keyboard or media report
 			//Special tasks, with Fn modifier
 		if((keymatrixA[15]&(1<<4)) && !(keymatrixA[5]&(1<<2)))  { //Detect Fn button being pressed down. Maybe we should refactor to use debounced? Takes more calculations...
 			funcmode = 1; //Set funcmode to 1 so that the LED routine knows to show the Fn-modifier layout
 			for(keycodeiterate = 0;keycodeiterate<6;keycodeiterate++) {
 				if(reportcodes[keycodeiterate]==0) break; //if a position is zero, all others after it will be too so break out of loop
 				if(reportcodes[keycodeiterate] == 0x29) runbootloader(); //If ESC key is pressed, trigger a bootloader restart to put keyboard into programming mode
-#ifdef LED_MATRIX_SUPPORT
-				if(reportcodes[keycodeiterate]>=0x1E && reportcodes[keycodeiterate]<=0x27) ledmodeset = reportcodes[keycodeiterate]-0x1E;
-#endif
+				#ifdef LED_MATRIX_SUPPORT
+					if(reportcodes[keycodeiterate]>=0x1E && reportcodes[keycodeiterate]<=0x27) ledmodeset = reportcodes[keycodeiterate]-0x1E;
+				#endif
 				if(reportcodes[keycodeiterate] == 0x4B) update_keys_max = 1; //If PgUP, require one timer tick to stuff a new report (shortest possible latency)
 				if(reportcodes[keycodeiterate] == 0x4E) update_keys_max = 2; //If PgDN, require two timer ticks to stuff a new report (no double-presses)
 			}
@@ -769,39 +798,56 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 		}
 
 		if(funcmode == 1) { //If we're in Func mode, the only keys we want to send are MediaController report keys
-			USB_MediaReport_Data_t* MediaReport = (USB_MediaReport_Data_t*)ReportData;
+			if(HIDInterfaceInfo == &Media_HID_Interface) {
+				USB_MediaReport_Data_t* MediaReport = (USB_MediaReport_Data_t*)ReportData;
 
-			//TODO: Break the hardcoded codes here out to an array so it can be more easily changed
-			for(keycodeiterate = 0; keycodeiterate < 6; keycodeiterate++) {
-				if(reportcodes[keycodeiterate] == 0x00) break; //A zero means the rest of the array is empty; break out
-				if(reportcodes[keycodeiterate] == 0x3A) MediaReport->Mute = 1;
-				if(reportcodes[keycodeiterate] == 0x3D) MediaReport->PlayPause = 1;
-				if(reportcodes[keycodeiterate] == 0x3C) MediaReport->VolumeUp = 1;
-				if(reportcodes[keycodeiterate] == 0x3B) MediaReport->VolumeDown = 1;
-				if(reportcodes[keycodeiterate] == 0x3E) MediaReport->PreviousTrack = 1;
-				if(reportcodes[keycodeiterate] == 0x3F) MediaReport->NextTrack = 1;
+				//TODO: Break the hardcoded codes here out to an array so it can be more easily changed
+				for(keycodeiterate = 0; keycodeiterate < 6; keycodeiterate++) {
+					if(reportcodes[keycodeiterate] == 0x00) break; //A zero means the rest of the array is empty; break out
+					if(reportcodes[keycodeiterate] == 0x3A) MediaReport->Mute = 1;
+					if(reportcodes[keycodeiterate] == 0x3D) MediaReport->PlayPause = 1;
+					if(reportcodes[keycodeiterate] == 0x3C) MediaReport->VolumeUp = 1;
+					if(reportcodes[keycodeiterate] == 0x3B) MediaReport->VolumeDown = 1;
+					if(reportcodes[keycodeiterate] == 0x3E) MediaReport->PreviousTrack = 1;
+					if(reportcodes[keycodeiterate] == 0x3F) MediaReport->NextTrack = 1;
+				}
+				*ReportID   = MEDIA_REPORTID_MediaReport;
+				*ReportSize = sizeof(USB_MediaReport_Data_t);
 			}
-			*ReportID   = KEYBOARD_REPORTID_MediaReport;
-			*ReportSize = sizeof(USB_MediaReport_Data_t);
-		}
+/*			else { //Not sure if we need to make this so complicated; can we just ignore and not pack a reportID or reportsize at all?
+				USB_KeyboardReport_Data_t* KeyboardReport = (USB_KeyboardReport_Data_t*)ReportData;
+
+				*ReportID   = KEYBOARD_REPORTID_KeyboardReport;
+				*ReportSize = sizeof(USB_KeyboardReport_Data_t);
+
+			}
+*/		}
 
 		if(funcmode == 0) { //If we're out of Func mode, keyboard behaves and reports normally
-			USB_KeyboardReport_Data_t* KeyboardReport = (USB_KeyboardReport_Data_t*)ReportData;
+			if(HIDInterfaceInfo == &Keyboard_HID_Interface) {
+				USB_KeyboardReport_Data_t* KeyboardReport = (USB_KeyboardReport_Data_t*)ReportData;
 
-			KeyboardReport->Modifier = reportmodifiers; //Update Modifier byte with report data
-			for(keycodeiterate = 0; keycodeiterate < 6; keycodeiterate++) {
-				if(reportcodes[keycodeiterate] == 0x00) break; //A zero means the rest of the array is empty; break out
-				KeyboardReport->KeyCode[keycodeiterate] = reportcodes[keycodeiterate]; //Update report keycodes
+				KeyboardReport->Modifier = reportmodifiers; //Update Modifier byte with report data
+				for(keycodeiterate = 0; keycodeiterate < 6; keycodeiterate++) {
+					if(reportcodes[keycodeiterate] == 0x00) break; //A zero means the rest of the array is empty; break out
+					KeyboardReport->KeyCode[keycodeiterate] = reportcodes[keycodeiterate]; //Update report keycodes
+				}
+				*ReportID   = KEYBOARD_REPORTID_KeyboardReport;
+				*ReportSize = sizeof(USB_KeyboardReport_Data_t);
 			}
-			*ReportID   = KEYBOARD_REPORTID_KeyboardReport;
-			*ReportSize = sizeof(USB_KeyboardReport_Data_t);
-		}
+/*			else {//Not sure if we need to make this so complicated; can we just ignore and not pack a reportID or reportsize at all?
+				USB_MediaReport_Data_t* MediaReport = (USB_MediaReport_Data_t*)ReportData;
+
+				*ReportID   = MEDIA_REPORTID_MediaReport;
+				*ReportSize = sizeof(USB_MediaReport_Data_t);
+			}
+*/		}
 
 		return false;
 	}
 	else {
 		USB_MacroReport_Data_t* MacroReport = (USB_MacroReport_Data_t*)ReportData;
-		if(!(keymatrixA[15]&(1<<4))) {
+		if(!(keymatrixA[15]&(1<<4))) { //Only send macros if the function key is not held down
 			for(keycodeiterate = 0; keycodeiterate <3;keycodeiterate++) {
 				if(reportmacros[keycodeiterate]) {
 					for(innermatrix = 0; innermatrix <8; innermatrix++) {

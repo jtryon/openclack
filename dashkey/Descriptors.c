@@ -83,31 +83,6 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM KeyboardReport[] =
 	    HID_RI_REPORT_SIZE(8, 0x08),
 	    HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_ARRAY | HID_IOF_ABSOLUTE),
 	HID_RI_END_COLLECTION(0),
-
-	/* Media controller report */
-	HID_RI_USAGE_PAGE(8, 0x0C), /* Consumer Page */
-	HID_RI_USAGE(8, 0x01), /* Consumer Controls */
-	HID_RI_COLLECTION(8, 0x01), /* Application */
-	HID_RI_REPORT_ID(8, KEYBOARD_REPORTID_MediaReport),
-		HID_RI_USAGE(8, 0xB0), /* Play */
-//		HID_RI_USAGE(8, 0xB1), /* Pause */
-//		HID_RI_USAGE(8, 0xB3), /* Fast Forward */
-//		HID_RI_USAGE(8, 0xB4), /* Rewind */
-		HID_RI_USAGE(8, 0xB5), /* Next Track */
-		HID_RI_USAGE(8, 0xB6), /* Previous Track */
-		HID_RI_USAGE(8, 0xB7), /* Stop */
-		HID_RI_USAGE(8, 0xCD), /* Play/Pause (toggle) */
-		HID_RI_USAGE(8, 0xE2), /* Mute */
-		HID_RI_USAGE(8, 0xE9), /* Volume Up */
-		HID_RI_USAGE(8, 0xEA), /* Volume Down */
-		HID_RI_REPORT_SIZE(8, 0x01),
-		HID_RI_REPORT_COUNT(8, 0x08),
-		HID_RI_LOGICAL_MINIMUM(8, 0),
-		HID_RI_LOGICAL_MAXIMUM(8, 1),
-		HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_RELATIVE),
-//		HID_RI_REPORT_COUNT(8, 0x05),
-//		HID_RI_INPUT(8, HID_IOF_CONSTANT),
-	HID_RI_END_COLLECTION(0),
 };
 
 //Macro report
@@ -155,6 +130,35 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM MacroReport[] =
 		HID_RI_END_COLLECTION(0),
 };
 
+const USB_Descriptor_HIDReport_Datatype_t PROGMEM MediaReport[] =
+{
+		/* Media controller report */
+		HID_RI_USAGE_PAGE(8, 0x0C), /* Consumer Page */
+		HID_RI_USAGE(8, 0x01), /* Consumer Controls */
+		HID_RI_COLLECTION(8, 0x01), /* Application */
+		HID_RI_REPORT_ID(8, MEDIA_REPORTID_MediaReport),
+			HID_RI_USAGE(8, 0xB0), /* Play */
+	//		HID_RI_USAGE(8, 0xB1), /* Pause */
+	//		HID_RI_USAGE(8, 0xB3), /* Fast Forward */
+	//		HID_RI_USAGE(8, 0xB4), /* Rewind */
+			HID_RI_USAGE(8, 0xB5), /* Next Track */
+			HID_RI_USAGE(8, 0xB6), /* Previous Track */
+			HID_RI_USAGE(8, 0xB7), /* Stop */
+			HID_RI_USAGE(8, 0xCD), /* Play/Pause (toggle) */
+			HID_RI_USAGE(8, 0xE2), /* Mute */
+			HID_RI_USAGE(8, 0xE9), /* Volume Up */
+			HID_RI_USAGE(8, 0xEA), /* Volume Down */
+			HID_RI_REPORT_SIZE(8, 0x01),
+			HID_RI_REPORT_COUNT(8, 0x08),
+			HID_RI_LOGICAL_MINIMUM(8, 0),
+			HID_RI_LOGICAL_MAXIMUM(8, 1),
+			HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_RELATIVE),
+	//		HID_RI_REPORT_COUNT(8, 0x05),
+	//		HID_RI_INPUT(8, HID_IOF_CONSTANT),
+		HID_RI_END_COLLECTION(0),
+};
+
+
 
 /** Device descriptor structure. This descriptor, located in FLASH memory, describes the overall
  *  device characteristics, including the supported USB version, control endpoint size and the
@@ -200,7 +204,7 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor =
 			.Header                 = {.Size = sizeof(USB_Descriptor_Configuration_Header_t), .Type = DTYPE_Configuration},
 
 			.TotalConfigurationSize = sizeof(USB_Descriptor_Configuration_t),
-			.TotalInterfaces        = 2,
+			.TotalInterfaces        = 3,
 
 			.ConfigurationNumber    = 1,
 			.ConfigurationStrIndex  = NO_DESCRIPTOR,
@@ -221,8 +225,8 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor =
 			.TotalEndpoints         = 1,
 
 			.Class                  = HID_CSCP_HIDClass,
-			.SubClass               = HID_CSCP_NonBootSubclass,
-			.Protocol               = HID_CSCP_NonBootProtocol,
+			.SubClass               = HID_CSCP_BootSubclass,
+			.Protocol               = HID_CSCP_KeyboardBootProtocol,
 
 			.InterfaceStrIndex      = NO_DESCRIPTOR
 		},
@@ -295,6 +299,44 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor =
 			.EndpointSize           = HID_EPSIZE,KEYBOARD_EPADDR,
 			.PollingIntervalMS      = 0x01
 		},
+
+	.HID3_MediaInterface =
+		{
+			.Header                 = {.Size = sizeof(USB_Descriptor_Interface_t), .Type = DTYPE_Interface},
+
+			.InterfaceNumber        = 0x02,
+			.AlternateSetting       = 0x00,
+
+			.TotalEndpoints         = 1,
+
+			.Class                  = HID_CSCP_HIDClass,
+			.SubClass               = HID_CSCP_NonBootSubclass,
+			.Protocol               = HID_CSCP_NonBootProtocol,
+
+			.InterfaceStrIndex      = NO_DESCRIPTOR
+		},
+
+	.HID3_MediaHID =
+		{
+			.Header                 = {.Size = sizeof(USB_HID_Descriptor_HID_t), .Type = HID_DTYPE_HID},
+
+			.HIDSpec                = VERSION_BCD(01.11),
+			.CountryCode            = 0x00,
+			.TotalReportDescriptors = 1,
+			.HIDReportType          = HID_DTYPE_Report,
+			.HIDReportLength        = sizeof(MediaReport)
+		},
+
+	.HID3_ReportINEndpoint =
+		{
+			.Header                 = {.Size = sizeof(USB_Descriptor_Endpoint_t), .Type = DTYPE_Endpoint},
+
+			.EndpointAddress        = MEDIA_EPADDR,
+			.Attributes             = (EP_TYPE_INTERRUPT | ENDPOINT_ATTR_NO_SYNC | ENDPOINT_USAGE_DATA),
+			.EndpointSize           = HID_EPSIZE,
+			.PollingIntervalMS      = 0x01
+		},
+
 };
 
 /** Language descriptor structure. This descriptor, located in FLASH memory, is returned when the host requests
@@ -327,7 +369,7 @@ const USB_Descriptor_String_t PROGMEM ProductString =
 {
 	.Header                 = {.Size = USB_STRING_LEN(12), .Type = DTYPE_String},
 
-	.UnicodeString          = L"Dashkey v0.5"
+	.UnicodeString          = L"Dashkey v0.6"
 };
 
 /** This function is called by the library when in device mode, and must be overridden (see library "USB Descriptors"
@@ -383,28 +425,38 @@ uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
 			Size    = sizeof(HIDReport);
 			break; */
 		case HID_DTYPE_HID:
-			if (!(wIndex))
+			if (wIndex == 0)
 			{
 				Address = &ConfigurationDescriptor.HID1_KeyboardHID;
 				Size    = sizeof(USB_HID_Descriptor_HID_t);
 			}
-			else
+			else if (wIndex == 1)
 			{
 				Address = &ConfigurationDescriptor.HID2_MacroHID;
+				Size    = sizeof(USB_HID_Descriptor_HID_t);
+			}
+			else //wIndex is 2; media report
+			{
+				Address = &ConfigurationDescriptor.HID3_MediaHID;
 				Size    = sizeof(USB_HID_Descriptor_HID_t);
 			}
 
 			break;
 		case HID_DTYPE_Report:
-			if (!(wIndex))
+			if (wIndex == 0)
 			{
 				Address = &KeyboardReport;
 				Size    = sizeof(KeyboardReport);
 			}
-			else
+			else if (wIndex == 1)
 			{
 				Address = &MacroReport;
 				Size    = sizeof(MacroReport);
+			}
+			else //wIndex is 2; media report
+			{
+				Address = &MediaReport;
+				Size    = sizeof(MediaReport);
 			}
 
 			break;
