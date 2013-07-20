@@ -1,0 +1,31 @@
+1. Grab a copy of WinAVR:
+http://sourceforge.net/projects/winavr/files/
+And install it.
+
+2. Grab a copy of the eclipse IDE (you should get the C/C++ edition if you want minimum grief):
+http://www.eclipse.org/downloads/
+Or set up another development environment of your choice
+
+3. Get the latest avr-eclipse:
+http://sourceforge.net/projects/avr-eclipse/files/avr-eclipse%20beta%20versions/
+And add it to your eclipse installation. A helpful guide can be found here:
+http://avr-eclipse.sourceforge.net/wiki/index.php/Plugin_Download
+
+4. Grab the latest build of LUFA:
+http://www.fourwalledcubicle.com/LUFA.php (2013-03-03 as of this writing)
+And extract it to a folder.
+
+5. Grab the latest build of dashkey out of the openclack github: (if you don't have it already)
+https://github.com/toastfox/openclack
+
+6. Open the dashkey project in eclipse
+
+7. Edit the makefile to provide a valid LUFA_PATH. While you're in here, be sure to set valid MCU, F_CPU, etc.. values
+
+8. Because eclipse sucks, you'll need to ignore a couple of their code analysis tools. To do so, open the project properties, go to "C/C++ General" then "Code Analysis". Set the radio button to "Use project settings", then uncheck "Symbol is not resolved", "Type cannot be resolved" and "Field cannot be resolved" down at the bottom
+
+7. Attempt to build, cry if it fails, fix errors
+
+8. Assuming no errors, grab the resulting dashkey.hex and flash it to your keyboard controller
+
+9. Optionally, generate an eeprom file and flash that too (if you want a custom keyboard map)
