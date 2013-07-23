@@ -25,14 +25,16 @@ A bit of info on what this keyboard actually is. : )
 
 #####Project files:
 
-- /kicad_files/*
- - Various files which make up the kicad project.  Open the file "toasty_tkl.pro" and the rest of the files will get loaded up by kicad.
+- /dashkey/*
+ - This is the firmware for the keyboard, codenamed DashKey.
 - /dxf_plots/*
  - These are DXF plots of layers of the case.
 - /notes/*
  - Notes explaining the LED configuration, random bits of stuff, part list.  Info on the boost converter, resitors and general math.
+- /kicad_files/*
+ - Various files which make up the kicad project.  Open the file "openclack-tkl.pro" and the rest of the files will get loaded up by kicad.
 - 3D_mockup.skp
- - I exported all my DXFs to SketchUp and then did some rough modelling.  This isn't 100% accuracte either (pretty close though).  It's meant to give a rough idea and help eyeball some potential problems.
+ - I exported all my DXFs to SketchUp.  This isn't 100% accuracte, it's meant to give a rough idea of the design.
 - /inkscape_plots/*
  - These are ready to go files for an online fabrication site: https://www.ponoko.com/
 - openclack-tkl_gerberplots.zip
@@ -41,15 +43,15 @@ A bit of info on what this keyboard actually is. : )
 #####Progress:
 
 - [X] PCB
-- [x] Backplate 
-- [x] Case
-- [ ] Firmware
+- [X] Backplate 
+- [X] Case
+- [X] Firmware
 - [X] Part List
 - [ ] Guide to build (Photos)
-- [ ] Prototyping
+- [X] Prototyping
 - [ ] Revision after prototyping.
 
 #####Sources/Thanks:
 Thanks to the folks at http://deskthority.net/ for helping out when I had questions about measurements!
-Extra big thanks to BathroomEpiphanies.  Wouldn't have been able to do it without your amazing wiki.
+Also a big thanks to BathroomEpiphanies.  Wouldn't have been able to do it without your amazing wiki.
 [Check it out here!](http://deskthority.net/wiki/KiCAD_keyboard_PCB_design_guide)
