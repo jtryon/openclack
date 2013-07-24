@@ -3,7 +3,8 @@ OpenClack.TKL
 
 #####Preface:
 
-This project is licensed under the GPL.  See gpl.md.
+The software in this project is licensed under the GPL.  See GPL.md
+The software in this project is licensed under the TAPR.  See TAPR.md
 
 This repo contains all the source files needed (minus firmware for the time being) to create a Tenkeyless Mechanical keyboard.  The keyboard is compatible with Cherry MX switches and both Cherry Corp and Costar branded stabilizers.
 In order to actually build this keep in mind you'd need access to the following.
@@ -14,7 +15,7 @@ In order to actually build this keep in mind you'd need access to the following.
 
 #####The keyboard:
 
-A bit of info on what this keyboard actually is. : )
+A bit of info on what this keyboard actually is.
 - Tenkeyless layout.
 - Supports LEDs for each key.
 - Does not require a resistor for each LED.
