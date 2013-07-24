@@ -46,13 +46,16 @@
 	uint8_t	ledanimationkey = 0; //#Used for tracking iterations in LED animations
 	bool 	ledanimationtoggle = 0; //#Used for tracking  state flips or ticks in LED animations
 	uint8_t keytrails[12][2] = {{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}}; //tracks pressed keys and their timeouts for keytrails
+	uint8_t ledmatrix[8][16]; //#stores matrix of active LEDs. One LED is stored per byte, with the upper 4 bits being D/C and the lowest bit being an on/off state.
+							  //Upper 3 bits of the lower nibble are brightness value (0-7)
+							  //0-7 is MSB, 8-15 is LSB (MSB is sent first). 5-7 are null.
+
 #endif
+
+uint8_t testcount = 0; //Test count to flash the teensy's built-in LED
 
 uint8_t keyshift = 0; //#shift variable for keymatrix
 uint8_t keymatrixA[16]; //#stores matrix of detected keys
-uint8_t ledmatrix[8][16]; //#stores matrix of active LEDs. One LED is stored per byte, with the upper 4 bits being D/C and the lowest bit being an on/off state.
-						  //Upper 3 bits of the lower nibble are brightness value (0-7)
-						  //0-7 is MSB, 8-15 is LSB (MSB is sent first). 5-7 are null.
 
 uint8_t reportcodes[6] = {0}; //#stores set of current keys to report
 uint8_t newcodes[6] = {0}; //stores just-acquired set of keys for debouncing/input
@@ -189,11 +192,21 @@ USB_ClassInfo_HID_Device_t Media_HID_Interface =
 /** Main program entry point. This routine contains the overall program flow, including initial
  *  setup of all components and the main program loop.
  */
+#ifdef OPENCLACK //If we're using openclack, we read two bytes at a time
+	static inline uint8_t readmatrixrow(void) {
+		//TODO: Input a return for the first byte read
+		return ~PINB;
+	}
+	static inline uint8_t readmatrixrow2(void) {
+		return ~PINF;
+	}
+#else //Dashkey-custom reads a single byte and iterates more rows instead
+	static inline uint8_t readmatrixrow(void) {
+		return ~((PIND&0b01111111)<<1 | ((PINC>>2)&0b00000001)); //amalgamate PC2 and PD0-6 into an 8-bit int containing a single keymatrix row
+	}
+#endif
 
-static inline uint8_t readmatrixrow(void) {
-	return ~((PIND&0b01111111)<<1 | ((PINC>>2)&0b00000001)); //amalgamate PC2 and PD0-6 into an 8-bit int containing a single keymatrix row
-}
-
+#ifndef OPENCLACK	//We only need SPI functionality if we're using dashkey-custom
 static inline void LATCH_KEY(void) {PORTB |= 0x01; PORTB &= 0xFE;} //flips !SS (PB0) high then low to latch keymatrix driver
 static inline void LATCH_LED(void) {PORTB |= (1<<PB5); PORTB &= ~(1<<PB5);} //flips PB5 high then low to latch LED drivers
 
@@ -213,10 +226,10 @@ static inline void SPI16_Send(uint8_t bighalf,uint8_t smallhalf) //Sends two SPI
 	while(!(SPSR & (1<<SPIF))); //Wait for the transmission to complete
 }
 
-
 //These two static inlines are used to disable and enable TIMER0's interrupt briefly to prevent TIMER0 from pushing out an SPI update during led_driver updates which can cause flickering
 static inline void et0i(void) {TIMSK0 |= (1 << 1);} // Enable TIMER0's CTC interrupt
 static inline void dt0i(void) {TIMSK0 &= ~(1 << 1);} // Disable TIMER0's CTC interrupt
+#endif
 
 
 int main(void)
@@ -250,13 +263,17 @@ void SetupHardware()
 	CLKPR=0x00; //remove the /8 clock prescaler division and set change enable low
 
 	/* Hardware Initialization */
-
+#ifndef OPENCLACK
 	DDRB |= (1<<DDB5)|(1<<DDB4); //set LED driver latch and dataflash !CS as output
 	PORTB |= (1<<PB4); //Set dataflash !CS pin high at startup (chip disabled)
 	PORTB &= ~(1<<PB5); //Set LED driver latch low at startup
+	SPI_MasterInit();
+#else
+	DDRD |= (1<<DDD6); //Enable the PD6 LED pin
+	PORTD |= (1<<PD6);
+#endif
 	LEDs_Init();
 	KeyMatrix_Init();
-	SPI_MasterInit();
 	USB_Init();
 	Timer_Init();
 
@@ -568,12 +585,21 @@ void Timer_Init(void){
 
 //pgm_read_byte(&(keytoled[i][j]))
 
+#ifdef OPENCLACK //We use all of PB and PF as inputs for openclack
+	void KeyMatrix_Init(void) {
+		DDRB &= 0b00000000; //set PB as input
+		DDRF &= 0b00000000; //set PF as input
+		PORTB |= 0b11111111; //enable pull-up on PB
+		PORTF |= 0b11111111; //enable pull-up on PF
+	}
+#else //We use PD plus PC2 for dashkey-custom
 void KeyMatrix_Init(void) {
 	DDRC &= 0b11111011; //set PC2 as input
 	DDRD &= 0b10000000; //set PD0-6 as input
 	PORTC |= 0b00000100; //enable pull-up on PC2
 	PORTD |= 0b01111111; //enable pull-up on PD0-6
 }
+#endif
 
 void process_keys(void) { //Handles debouncing and report-stuffing.  Should act every 5ms, otherwise terminate immediately
 	uint8_t UsedKeyCodes = 0;
@@ -654,6 +680,7 @@ void process_keys(void) { //Handles debouncing and report-stuffing.  Should act 
 	}
 }
 
+#ifndef OPENCLACK
 void SPI_MasterInit(void)
 {
 	PRR0 &= 0xFB; //set SPI powersave bit low to activate it
@@ -666,6 +693,7 @@ void SPI_MasterInit(void)
 	SPSR |= (1<<SPI2X);
 	PORTB &= 0xFE; //set !SS output low at initialise (latch input on LEDdrv)
 }
+#endif
 
 /** Event handler for the library USB Connection event. */
 void EVENT_USB_Device_Connect(void)
@@ -937,11 +965,13 @@ void pack_gkey(USB_MacroReport_Data_t *MacroReport, uint8_t gkey) {
 void runbootloader(void) {
     TIMSK0 &= ~(1 << 1); // Disable CTC interrupt for TIMER0
     TIMSK1 &= ~(1 << 1); // Disable CTC interrupt for TIMER1
+#ifndef OPENCLACK
     SPI16_Send(0x00, 0x00); //Clear the three driver chips before reset to prevent stuck LEDs and power draw and pin pulldown from keymatrix
     SPI16_Send(0x00, 0x00);
     SPI16_Send(0x00, 0x00);
 	LATCH_KEY(); //Latch they key matrix driver
 	LATCH_LED(); //Latch the LED drivers
+#endif
     USB_Disable();
 	BootStartPtr();
 }
@@ -993,6 +1023,11 @@ ISR(TIMER0_COMPA_vect)
     // Need to do maintenance tasks, sample keys and write out 3 SPI bytes & latch
 	// We don't technically need to be refreshing the keymatrix so often (we could do it 1/5 as often, as the existing code executes in roughly 1ms), but we have to send the word anyways so the overhead is just a couple instructions every 64uS at worst
 	keymatrixA[keyshift] = readmatrixrow();
+	#ifdef OPENCLACK
+		keyshift++;
+		keymatrixA[keyshift] = readmatrixrow2();
+	#endif
+
 	if(keyshift == 15) keyshift = 0; //increment keyshift
 	else keyshift++;
 
@@ -1010,10 +1045,24 @@ ISR(TIMER0_COMPA_vect)
 		SPI16_Send(led_msb, led_lsb); //send current LED driver word
 	#endif
 
+#ifndef OPENCLACK		//dashkey-custom shifts an SPI bit along
 	if(keyshift&0x08) SPI16_Send((1<<(keyshift&0x07)), 0x00); //send the key matrix selection bit
 	else SPI16_Send(0x00, (1<<(keyshift&0x07)));
 
 	LATCH_KEY(); //Latch they key matrix driver
+#else					//Whereas openclack simply sets a bit in PC (PC0-4, PC7) for ROW0-5 respectively
+	uint8_t tempkey = (keyshift>>1)&0x0F; //shift keyshift right by one to /2, then mask it off to 0-15. This gives us a row count for openclack
+	if(tempkey == 5) { //We're on the last active row, so we add an extra shift amount to our bit
+		//PORTC = ((~(1<<(tempkey+2)))&0x9F) | (PINC&(LEDS_LED2|LEDS_LED3));
+		PORTC |= 0x9F;
+		PORTC &= ~(1<<(tempkey+2));
+	}
+	else {
+		//PORTC = ((~(1<<tempkey))&0x9F) | (PINC&(LEDS_LED2|LEDS_LED3));
+		PORTC |= 0x9F;
+		PORTC &= ~(1<<tempkey);
+	}
+#endif
 
 	#ifdef LED_MATRIX_SUPPORT
 		LATCH_LED(); //Latch the LED drivers
@@ -1024,6 +1073,14 @@ ISR(TIMER0_COMPA_vect)
 
 ISR(TIMER1_COMPA_vect)	//5ms timer, used for timing animations to LEDs and debouncing.
 {						//Simply update_keys to signal when to trigger a key update and increment the frame update
+	if(testcount == 255) {
+		PIND = 0b01000000; //Flips pin PD6
+		testcount = 0;
+	}
+	else {
+		testcount++;
+	}
+
 	update_keys++;
 	frame_update++;
 }

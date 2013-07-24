@@ -40,7 +40,7 @@
 /** \ingroup Group_LEDs
  *  @defgroup Group_LEDs_USER USER
  *
- *  Board specific LED driver header for the openclack+teensy.
+ *  Board specific LED driver header for the Atmel USBKEY.
  *
  *  \note This file should not be included directly. It is automatically included as needed by the LEDs driver
  *        dispatch header located in LUFA/Drivers/Board/LEDs.h.
@@ -68,23 +68,22 @@
 
 	/* Public Interface - May be used in end-application: */
 		/* Macros: */
-			//For openclack, PC5 is capslock, PC6 is scrllock
+			/** LED mask for the first LED on the board. */
+			#define LEDS_LED1        (1 << 7)
 
-			/** LED mask for the first LED on the board. (NUMLOCK) */
-			#define LEDS_LED1        (0 << 0) //No numlock for openclack
+			/** LED mask for the second LED on the board. */
+			#define LEDS_LED2        (1 << 6)
 
-			/** LED mask for the second LED on the board. (CAPSLOCK) */
-			#define LEDS_LED2        (1 << 5)
-
-			/** LED mask for the third LED on the board. (SCROLLLOCK)*/
-			#define LEDS_LED3        (1 << 6)
+			/** LED mask for the third LED on the board. */
+			#define LEDS_LED3        (1 << 5)
 
 			/** LED mask for the fourth LED on the board. */
 //			#define LEDS_LED4        (1 << 6)
 
 			/** LED mask for all the LEDs on the board. */
 			#define LEDS_ALL_LEDS    (LEDS_LED1 | LEDS_LED2 | LEDS_LED3)
-			#define LEDS_ALLC_LEDS    0b01100000
+			#define LEDS_ALLC_LEDS    0b11000000
+			#define LEDS_ALLB_LEDS    0b10000000
 
 			/** LED mask for none of the board LEDs. */
 			#define LEDS_NO_LEDS     0
@@ -95,38 +94,45 @@
 			{
 				DDRC  |=  LEDS_ALLC_LEDS;
 				PORTC |= LEDS_ALLC_LEDS;
+				DDRB  |=  LEDS_ALLB_LEDS;
+				PORTB |= LEDS_ALLB_LEDS;
 			}
 
 			static inline void LEDs_TurnOnLEDs(const uint8_t LEDMask)
 			{
 				PORTC &= ~(LEDMask&LEDS_ALLC_LEDS);
+				PORTB &= ~(LEDMask&LEDS_ALLB_LEDS);
 			}
 
 			static inline void LEDs_TurnOffLEDs(const uint8_t LEDMask)
 			{
 				PORTC |= (LEDMask&LEDS_ALLC_LEDS);
+				PORTB |= (LEDMask&LEDS_ALLB_LEDS);
 			}
 
 			static inline void LEDs_SetAllLEDs(const uint8_t LEDMask)
 			{
-				PORTC = ((PORTC & ~LEDS_ALLC_LEDS) | (~LEDMask & LEDS_ALLC_LEDS));
+				PORTC = ((PORTC & ~LEDS_ALLC_LEDS) | ((~LEDMask & LEDS_ALLC_LEDS>>1)<<1));
+				PORTB = ((PORTB & ~LEDS_ALLB_LEDS) | (~LEDMask & LEDS_ALLB_LEDS));
 			}
 
 			static inline void LEDs_ChangeLEDs(const uint8_t LEDMask,
 			                                   const uint8_t ActiveMask)
 			{
-				PORTC = ((PORTC & ~(LEDMask&LEDS_ALLC_LEDS)) | (ActiveMask&LEDS_ALLC_LEDS));
+				PORTC = ((PORTC & ~((LEDMask&(LEDS_ALLC_LEDS>>1))<<1)) | ((ActiveMask&(LEDS_ALLC_LEDS>>1))<<1));
+				PORTB = ((PORTB & ~(LEDMask&LEDS_ALLB_LEDS)) | (ActiveMask&LEDS_ALLB_LEDS));
 			}
 
 			static inline void LEDs_ToggleLEDs(const uint8_t LEDMask)
 			{
-				PORTC ^= LEDMask&LEDS_ALLC_LEDS;
+				PORTC ^= (LEDMask&(LEDS_ALLC_LEDS>>1)<<1);
+				PORTB ^= LEDMask&LEDS_ALLB_LEDS;
 			}
 
 			static inline uint8_t LEDs_GetLEDs(void) ATTR_WARN_UNUSED_RESULT;
 			static inline uint8_t LEDs_GetLEDs(void)
 			{
-				return (~PORTC&LEDS_ALLC_LEDS);
+				return (~PORTB&LEDS_ALLB_LEDS)|((~PORTC&LEDS_ALLC_LEDS)>>1);
 			}
 		#endif
 

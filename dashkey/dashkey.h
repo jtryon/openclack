@@ -36,8 +36,11 @@
 #ifndef _DASHKEY_H_
 #define _DASHKEY_H_
 
-	//Leave defined to compile in support for key LED functionality; comment out for matrix only
-	#define LED_MATRIX_SUPPORT
+	//Leave defined to compile in support for individual key LED functionality (dashkey-custom); comment out for matrix only (openclack)
+	//#define LED_MATRIX_SUPPORT
+
+	//Are we using openclack or dashkey-custom?
+	#define OPENCLACK
 
 	/* Includes: */
 	#include <avr/io.h>

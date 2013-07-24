@@ -11,7 +11,9 @@
 
 # Run "make help" for target help.
 
-MCU          = atmega32u2
+#MCU is atmega32u2 for dashkey-custom, at90usb1286 for openclack
+#MCU          = atmega32u2
+MCU          = at90usb1286
 ARCH         = AVR8
 BOARD        = USER
 F_CPU        = 16000000
