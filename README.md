@@ -7,7 +7,7 @@ The software in this project is licensed under the GPL.  See GPL.md
 
 The hardware in this project is licensed under the TAPR.  See TAPR.md
 
-This repo contains all the source files needed (minus firmware for the time being) to create a Tenkeyless Mechanical keyboard.  The keyboard is compatible with Cherry MX switches and both Cherry Corp and Costar branded stabilizers.
+This repo contains all the source files needed to create a Tenkeyless Mechanical keyboard.  Made to be compatible with Cherry MX switches and both Cherry Corp and Costar branded stabilizers.
 In order to actually build this keep in mind you'd need access to the following.
 - CNC, laser or Waterjet cutting facility for fabrication.
 - Soldering iron and supplies.
