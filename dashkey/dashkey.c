@@ -271,6 +271,7 @@ void SetupHardware()
 #else
 	DDRD |= (1<<DDD6); //Enable the PD6 LED pin
 	PORTD |= (1<<PD6);
+	DDRC |= 0b10011111; //Set the row pins as outputs
 #endif
 	LEDs_Init();
 	KeyMatrix_Init();
@@ -1060,7 +1061,7 @@ ISR(TIMER0_COMPA_vect)
 	else {
 		//PORTC = ((~(1<<tempkey))&0x9F) | (PINC&(LEDS_LED2|LEDS_LED3));
 		PORTC |= 0x9F;
-		PORTC &= ~(1<<tempkey);
+		PORTC &= (~(1<<tempkey))|0x80; //We keep the last pin high to prevent a duplicate of ROW5
 	}
 #endif
 
