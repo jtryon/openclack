@@ -1068,17 +1068,18 @@ ISR(TIMER0_COMPA_vect)
 	#endif
 }
 
-//  This section will flash the teensy test LED on and off to test you firmware has flashed properly.
-ISR(TIMER1_COMPA_vect)	//5ms timer, used for timing animations to LEDs and debouncing.
-{						//Simply update_keys to signal when to trigger a key update and increment the frame update
-	if(testcount == 255) {
-		PIND = 0b01000000; //Flips pin PD6
-		testcount = 0;
-}
-	else {
-		testcount++;
-	}
-
-	update_keys++;
-	frame_update++;
+ISR(TIMER1_COMPA_vect)    //5ms timer, used for timing animations to LEDs and debouncing.
+{    //Simply update_keys to signal when to trigger a key update and increment the frame update
+    //This section will flash the teensy test LED on and off to test you firmware has flashed properly.
+    /*
+    if(testcount == 255) {
+        PIND = 0b01000000; //Flips pin PD6
+        testcount = 0;
+    }
+    else {
+        testcount++;
+    }
+    */
+    update_keys++;
+    frame_update++;
 }
