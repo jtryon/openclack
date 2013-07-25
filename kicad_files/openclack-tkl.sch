@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 14/07/2013 10:01:23 PM
+EESchema Schematic File Version 2
 LIBS:components
 LIBS:openclack-tkl-cache
 EELAYER 27 0
@@ -7,7 +7,7 @@ $Descr User 16535 7283
 encoding utf-8
 Sheet 1 1
 Title "Toasty TKL"
-Date "12 jul 2013"
+Date "25 jul 2013"
 Rev "REV 1A"
 Comp ""
 Comment1 ""
@@ -2217,23 +2217,23 @@ $EndComp
 $Comp
 L RESISTOR BC_R2
 U 1 1 51BE5B6D
-P -2600 8350
-F 0 "BC_R2" V -2700 8350 50  0000 C CNN
-F 1 "51K OHM 1/8W" V -2500 8350 50  0000 C CNN
-F 2 "~" H -2600 8350 60  0000 C CNN
-F 3 "~" H -2600 8350 60  0000 C CNN
-	1    -2600 8350
+P -2850 8350
+F 0 "BC_R2" V -2950 8350 50  0000 C CNN
+F 1 "51K OHM 1/8W" V -2750 8350 50  0000 C CNN
+F 2 "~" H -2850 8350 60  0000 C CNN
+F 3 "~" H -2850 8350 60  0000 C CNN
+	1    -2850 8350
 	-1   0    0    1   
 $EndComp
 $Comp
 L RESISTOR BC_R1
 U 1 1 51BE5B7C
-P -2250 7950
-F 0 "BC_R1" V -2150 7950 50  0000 C CNN
-F 1 "3.6K OHM 1/8W" V -2350 7950 50  0000 C CNN
-F 2 "~" H -2250 7950 60  0000 C CNN
-F 3 "~" H -2250 7950 60  0000 C CNN
-	1    -2250 7950
+P -2000 7950
+F 0 "BC_R1" V -1900 7950 50  0000 C CNN
+F 1 "3.6K OHM 1/8W" V -2100 7950 50  0000 C CNN
+F 2 "~" H -2000 7950 60  0000 C CNN
+F 3 "~" H -2000 7950 60  0000 C CNN
+	1    -2000 7950
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -2401,6 +2401,8 @@ F 3 "~" H 12050 3200 60  0000 C CNN
 	1    12050 3200
 	1    0    0    -1  
 $EndComp
+Text Label 17600 8000 2    60   ~ 0
+Q1
 Wire Wire Line
 	5850 5300 8650 5300
 Wire Wire Line
@@ -3794,11 +3796,7 @@ Wire Wire Line
 Wire Wire Line
 	-2650 7650 0    7650
 Connection ~ -1650 7950
-Wire Wire Line
-	-2600 7950 -2500 7950
 Connection ~ -1650 11200
-Wire Wire Line
-	-2000 7950 -250 7950
 Wire Wire Line
 	0    11000 0    14150
 Wire Wire Line
@@ -3836,12 +3834,11 @@ Wire Wire Line
 Connection ~ -3150 8900
 Wire Wire Line
 	-2600 6050 -2600 8100
-Connection ~ -2600 7950
 Connection ~ -2600 7650
 Wire Wire Line
 	11700 6050 -2600 6050
 Wire Wire Line
-	-2500 8600 -2600 8600
+	-2850 8600 -2500 8600
 Wire Wire Line
 	-3150 7650 -3050 7650
 Connection ~ -250 8650
@@ -3896,8 +3893,6 @@ Wire Wire Line
 	22600 8300 20300 8300
 Wire Wire Line
 	22700 8400 20300 8400
-Text Label 17600 8000 2    60   ~ 0
-Q1
 Wire Wire Line
 	7650 11800 22000 11800
 Wire Wire Line
@@ -3959,4 +3954,17 @@ Wire Wire Line
 Wire Wire Line
 	9850 -4350 17000 -4350
 Connection ~ 6850 2450
+Wire Wire Line
+	-250 7950 -1750 7950
+Wire Wire Line
+	-2600 8100 -2850 8100
+Wire Wire Line
+	-2250 7950 -2450 7950
+Wire Wire Line
+	-2450 7950 -2450 8400
+Wire Wire Line
+	-2450 8400 -2650 8400
+Wire Wire Line
+	-2650 8400 -2650 8600
+Connection ~ -2650 8600
 $EndSCHEMATC
