@@ -289,6 +289,8 @@ void SetupHardware()
 	DDRD |= (1<<DDD6); //Enable the PD6 LED pin
 	PORTD |= (1<<PD6);
 	DDRC |= 0b10011111; //Set the row pins as outputs
+	DDRD |= (1<<DDD1); //Enable the key LED PWM mosfet's pin as output
+	PORTD |= (1<<PD1); //Set the pin to one
 #endif
 	LEDs_Init();
 	KeyMatrix_Init();

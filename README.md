@@ -16,6 +16,9 @@ In order to actually build this keep in mind you'd need access to the following.
 
 #####The keyboard:
 
+Here's an album of the running prototype.  It's still under construction, needs tweaks...  But this works right now! : )
+http://imgur.com/a/Rx5gJ
+
 A bit of info on what this keyboard actually is.
 - Tenkeyless layout.
 - Supports LEDs for each key.
