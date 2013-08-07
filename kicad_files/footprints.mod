@@ -1,4 +1,4 @@
-PCBNEW-LibModule-V1  26/07/2013 1:22:07 PM
+PCBNEW-LibModule-V1  07/08/2013 10:36:04 AM
 # encoding utf-8
 Units mm
 $INDEX
@@ -1007,7 +1007,7 @@ Po -1.27 5.08
 $EndPAD
 $EndMODULE CHERRYMX_LED_625H_40mm_50mm
 $MODULE CP_6mm
-Po 0 0 0 15 51F04383 00000000 ~~
+Po 0 0 0 15 5202857F 00000000 ~~
 Li CP_6mm
 Cd 6mm disc ceramic capacitor
 Kw C
@@ -1025,14 +1025,14 @@ Sh "1" C 1.50114 1.50114 0 0 0
 Dr 0.8001 0 0
 At STD N 00E0FFFF
 Ne 2 "N-00000112"
-Po -3.556 0
+Po -4.572 0
 $EndPAD
 $PAD
 Sh "2" C 1.50114 1.50114 0 0 0
 Dr 0.8001 0 0
 At STD N 00E0FFFF
 Ne 1 "/GND"
-Po 3.556 0
+Po 4.572 0
 $EndPAD
 $SHAPE3D
 Na "discret/capacitor/cnp_6mm_disc.wrl"
