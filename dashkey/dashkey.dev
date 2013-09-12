@@ -1,7 +1,7 @@
 [Project]
 FileName=dashkey.dev
 Name=dashkey
-UnitCount=13
+UnitCount=9
 Type=1
 Ver=2
 ObjFiles=
@@ -52,25 +52,16 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=dashkey_build.txt
-Folder=
-Compile=0
-Link=0
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit4]
 FileName=Descriptors.c
-CompileCpp=1
 Folder=
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+CompileCpp=1
 
-[Unit5]
+[Unit4]
 FileName=Descriptors.h
 CompileCpp=1
 Folder=
@@ -81,36 +72,39 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=Doxygen.conf
-Folder=
-Compile=0
-Link=0
+FileName=Board\LEDs.h
+Folder=Board
+Compile=1
+Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+CompileCpp=1
 
 [Unit7]
-FileName=makefile
-Folder=
-Compile=0
-Link=0
+FileName=Board\LEDs_dashkey-custom.h
+Folder=Board
+Compile=1
+Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+CompileCpp=1
 
 [Unit8]
-FileName=makefile_old
-Folder=
-Compile=0
-Link=0
+FileName=Board\LEDs_openclack.h
+Folder=Board
+Compile=1
+Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+CompileCpp=1
 
 [Unit9]
-FileName=Board\Buttons.h
+FileName=Config\LUFAConfig.h
 CompileCpp=1
-Folder=Board
+Folder=Config
 Compile=1
 Link=1
 Priority=1000
@@ -118,9 +112,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit10]
-FileName=Board\LEDs.h
+FileName=Config\LUFAConfig.h
 CompileCpp=1
-Folder=Board
+Folder=Config
 Compile=1
 Link=1
 Priority=1000
@@ -128,9 +122,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit11]
-FileName=Board\LEDs_dashkey-custom.h
+FileName=Config\LUFAConfig.h
 CompileCpp=1
-Folder=Board
+Folder=Config
 Compile=1
 Link=1
 Priority=1000
@@ -175,4 +169,13 @@ ProductName=
 ProductVersion=
 AutoIncBuildNr=0
 SyncProduct=0
+
+[Unit5]
+FileName=makefile
+Folder=
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
 
