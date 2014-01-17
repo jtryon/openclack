@@ -93,25 +93,25 @@
 		#if !defined(__DOXYGEN__)
 			static inline void LEDs_Init(void)
 			{
-				DDRC  |=  LEDS_ALLC_LEDS;
+				DDRC  |= LEDS_ALLC_LEDS;
 				PORTC |= LEDS_ALLC_LEDS;
 			}
 
-			static inline void LEDs_TurnOnLEDs(const uint8_t LEDMask)
+			static inline void LEDs_TurnOffLEDs(const uint8_t LEDMask)
 			{
 				PORTC &= ~(LEDMask&LEDS_ALLC_LEDS);
 			}
 
-			static inline void LEDs_TurnOffLEDs(const uint8_t LEDMask)
+			static inline void LEDs_TurnOnLEDs(const uint8_t LEDMask)
 			{
 				PORTC |= (LEDMask&LEDS_ALLC_LEDS);
 			}
 
 			static inline void LEDs_SetAllLEDs(const uint8_t LEDMask)
 			{
-				PORTC = ((PORTC & ~LEDS_ALLC_LEDS) | (~LEDMask & LEDS_ALLC_LEDS));
+				PORTC = ((PORTC & ~LEDS_ALLC_LEDS) | (LEDMask & LEDS_ALLC_LEDS));
 			}
-
+		//LED output inverted via TurnOn and TurnOff above, swapped names
 			static inline void LEDs_ChangeLEDs(const uint8_t LEDMask,
 			                                   const uint8_t ActiveMask)
 			{

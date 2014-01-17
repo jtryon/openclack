@@ -287,10 +287,12 @@ void SetupHardware()
 	SPI_MasterInit();
 #else
 	DDRD |= (1<<DDD6); //Enable the PD6 LED pin
-	PORTD |= (1<<PD6);
+//	PORTD |= (1<<PD6); //Set the pin to one
+	PORTD &= ~(1<<PD6); //Set the pin to zero
 	DDRC |= 0b10011111; //Set the row pins as outputs
 	DDRD |= (1<<DDD1); //Enable the key LED PWM mosfet's pin as output
-	PORTD |= (1<<PD1); //Set the pin to one
+//	PORTD |= (1<<PD1); //Set the pin to one
+	PORTD &= ~(1<<PD1); //Set the pin to zero
 #endif
 	LEDs_Init();
 	KeyMatrix_Init();
