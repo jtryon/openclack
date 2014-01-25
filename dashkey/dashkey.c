@@ -1092,11 +1092,11 @@ ISR(TIMER0_COMPA_vect)
 		//For high values of brightness, the LEDs are on most of the time
 		if (brightness > brightness_count) {
 			//Turn your mosfet pin on here
-			PORTD &= ~(1<<PD6);
+			PORTD |= (1<<PD1); //Set the LED mosfet pin on
 		}
 		else {
 			//Turn your mosfet pin off here
-			PORTD |= (1<<PD6);
+			PORTD &= ~(1<<PD1); //Set the LED mosfet pin off
 		}
 		brightness_count += BRIGHTNESS_STEPSIZE;
 	#endif
