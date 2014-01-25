@@ -130,6 +130,10 @@ uint8_t gcodes[27] PROGMEM = { 0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x10, 0x21, 0
 uint8_t funcmode = 0; //#Set to 1 when the Function key is held down, 2 when in macro programming mode
 uint8_t update_keys = 0; //#keymatrix updater count; used to time 5ms increments to refill keymatrix
 uint8_t update_keys_max = 2; //Maximum value for update_keys checking; used for debounce tweaking
+uint8_t brightness = 255; //Current value for global brightness
+uint8_t brightness_count = 0; //Current value for global brightness thresh-hold for LED rates
+bool brightness_wait = false; //Variable to tell when brightness value has been pushed out
+#define BRIGHTNESS_STEPSIZE 15
 
 AppPtr_t BootStartPtr = (AppPtr_t)0x7000;
 
@@ -776,10 +780,15 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 {
 	uint8_t  keycodeiterate = 0;
 	uint8_t  innermatrix = 0;
+	uint8_t  brightness_adjust = 0; //Holds change in value for global brightness
 
 	if (HIDInterfaceInfo == &Keyboard_HID_Interface || HIDInterfaceInfo == &Media_HID_Interface ) { //Do our usual matrix calculations if we're sending a keyboard or media report
-			//Special tasks, with Fn modifier
+		//Special tasks, with Fn modifier
+		#ifdef OPENCLACK
+		if((keymatrixA[3]&(1<<6)) && (keymatrixA[5]&(1<<6)))  { //Detect Fn button being pressed down. Maybe we should refactor to use debounced? Takes more calculations...
+		#else
 		if((keymatrixA[15]&(1<<4)) && !(keymatrixA[5]&(1<<2)))  { //Detect Fn button being pressed down. Maybe we should refactor to use debounced? Takes more calculations...
+		#endif
 			funcmode = 1; //Set funcmode to 1 so that the LED routine knows to show the Fn-modifier layout
 			for(keycodeiterate = 0;keycodeiterate<6;keycodeiterate++) {
 				if(reportcodes[keycodeiterate]==0) break; //if a position is zero, all others after it will be too so break out of loop
@@ -787,8 +796,13 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 				#ifdef LED_MATRIX_SUPPORT
 					if(reportcodes[keycodeiterate]>=0x1E && reportcodes[keycodeiterate]<=0x27) ledmodeset = reportcodes[keycodeiterate]-0x1E;
 				#endif
+				#ifdef OPENCLACK
+				if(reportcodes[keycodeiterate] == 0x4B) brightness_adjust = 1; //If PgUP, increase brightness
+				if(reportcodes[keycodeiterate] == 0x4E) brightness_adjust = 2; //If PgDN, decrease brightness
+				#else
 				if(reportcodes[keycodeiterate] == 0x4B) update_keys_max = 1; //If PgUP, require one timer tick to stuff a new report (shortest possible latency)
 				if(reportcodes[keycodeiterate] == 0x4E) update_keys_max = 2; //If PgDN, require two timer ticks to stuff a new report (no double-presses)
+				#endif
 			}
 		}
 		else {
@@ -799,6 +813,30 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 			else {
 				funcmode = 0;
 			}
+		}
+
+		if(brightness_wait == true && brightness_adjust == 0) { //
+			brightness_wait = false;
+		}
+		
+		if(brightness_adjust == 2 && brightness_wait == false){  //Page Down, decrement brightness
+			if(brightness > BRIGHTNESS_STEPSIZE) {
+				brightness -= BRIGHTNESS_STEPSIZE;
+			}
+			else {
+				brightness = 0;
+			}
+			brightness_wait = true;
+		}
+		
+		if(brightness_adjust == 1 && brightness_wait == false){  //Page Up, increment brightness
+			if(brightness < 255-BRIGHTNESS_STEPSIZE) {
+				brightness += BRIGHTNESS_STEPSIZE;
+			}
+			else {
+				brightness = 255;
+			}
+			brightness_wait = true;
 		}
 
 		if(funcmode == 2) { //We're taking in a new set of macros to modify
@@ -1048,6 +1086,19 @@ ISR(TIMER0_COMPA_vect)
 	#ifdef OPENCLACK
 		keyshift++;
 		keymatrixA[keyshift] = readmatrixrow2();
+		
+		//Compare our rolling brightness_count variable to the semi-static brightness
+		//When brightness_count exceeds brightness, turn the pin off
+		//For high values of brightness, the LEDs are on most of the time
+		if (brightness > brightness_count) {
+			//Turn your mosfet pin on here
+			PORTD &= ~(1<<PD6);
+		}
+		else {
+			//Turn your mosfet pin off here
+			PORTD |= (1<<PD6);
+		}
+		brightness_count += BRIGHTNESS_STEPSIZE;
 	#endif
 
 	if(keyshift == 15) keyshift = 0; //increment keyshift
