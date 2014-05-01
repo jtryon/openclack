@@ -39,13 +39,13 @@ Prototype images: http://imgur.com/a/Rx5gJ https://imgur.com/a/tNWkU
 - openclack.skp
  - Rough 3D render of the project (SketchUp).
 
-#####Instructions:
+####Instructions:
 
-#Ordering parts:
+###Ordering parts:
 
-#Assembly:
+###Assembly:
 
-#Loading Firmware:
+###Loading Firmware:
 
 #####Sources/Thanks:
 
