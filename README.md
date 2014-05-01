@@ -39,15 +39,19 @@ Prototype images: http://imgur.com/a/Rx5gJ https://imgur.com/a/tNWkU
 - openclack.skp
  - Rough 3D render of the project (SketchUp).
 
-####Instructions:
+###Instructions:
 
-###Ordering parts:
+#####Ordering parts:
+WIP
 
-###Assembly:
+#####Assembly:
+WIP
 
-###Loading Firmware:
+#####Loading Firmware:
+WIP
 
 #####Sources/Thanks:
+WIP
 
 Thanks to the folks at http://deskthority.net/ for helping out when I had questions about measurements!
 Also a big thanks to BathroomEpiphanies.  Wouldn't have been able to do it without your amazing wiki.
