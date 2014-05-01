@@ -3,60 +3,52 @@ OpenClack.TKL
 
 #####Preface:
 
-The software in this project is licensed under the GPL.  See GPL.md
+Software in this project is licensed under the GPL.  See GPL.md
+Hardware in this project is licensed under the TAPR.  See TAPR.md
 
-The hardware in this project is licensed under the TAPR.  See TAPR.md
-
-This repo contains all the source files needed to create a Tenkeyless Mechanical keyboard.  Made to be compatible with Cherry MX switches and both Cherry Corp and Costar branded stabilizers.
-In order to actually build this keep in mind you'd need access to the following.
-- CNC, laser or Waterjet cutting facility for fabrication.
+This repository contains all the source files needed to create a 87 key (tenkeyless) mechanical keyboard.
+In order to actually build this keep in mind you'll need access to the following.
+- PCB fabrication.
+- CNC, laser or waterjet cutting.
 - Soldering iron and supplies.
 - A source for your switches, stabilizers and electronic components.
-- Somewhere to fabricate your pcb.
 
 #####The keyboard:
 
-Here's an album of the running prototype.  It's still under construction, needs tweaks...  But this works right now! : )
-http://imgur.com/a/Rx5gJ
+Prototype images: http://imgur.com/a/Rx5gJ https://imgur.com/a/tNWkU
 
-A bit of info on what this keyboard actually is.
 - Tenkeyless layout.
-- Supports LEDs for each key.
+- Compatible with Cherry MX switches and both Cherry and Costar stabilizers.
+- LED support for each key.
 - Does not require a resistor for each LED.
-- N-Key rollover, no ghosting, 1 diode per switch.
-- Firmware which allows for custom key mapping, macros, debouncing and LED control.
+- N-Key roll-over, no ghosting, 1 diode per switch.
+- Firmware which allows for custom key mapping, macros, de-bouncing and LED control.
 - Mini-B connector.
-- Controller is a Teensy 2.0++.
+- Teensy 2.0++ controller.
 
 #####Project files:
 
 - /dashkey/*
- - This is the firmware for the keyboard, codenamed DashKey.
-- /dxf_plots/*
- - These are DXF plots of layers of the case.
-- /notes/*
- - Notes explaining the LED configuration, random bits of stuff, part list.  Info on the boost converter, resitors and general math.
+ - Firmware for the keyboard, codenamed DashKey.
+- /fabrication/*
+ - Final project files to be sent off and fabricated.
 - /kicad_files/*
- - Various files which make up the kicad project.  Open the file "openclack-tkl.pro" and the rest of the files will get loaded up by kicad.
-- 3D_mockup.skp
- - I exported all my DXFs to SketchUp.  This isn't 100% accuracte, it's meant to give a rough idea of the design.
-- /inkscape_plots/*
- - These are ready to go files for an online fabrication site: https://www.ponoko.com/
-- openclack-tkl_gerberplots.zip
- - These are ready to go files for PCB fabing.  I sent these to: http://www.myropcb.com/
- 
-#####Progress:
+ - Kicad project.  Open the file "openclack-tkl.pro".
+- /notes/*
+ - Notes explaining the LED configuration, parts list, info on the boost converter, resistors.
+- openclack.skp
+ - Rough 3D render of the project (SketchUp).
 
-- [X] PCB
-- [X] Backplate 
-- [X] Case
-- [X] Firmware
-- [X] Part List
-- [ ] Guide to build (Photos)
-- [X] Prototyping
-- [ ] Revision after prototyping.
+#####Instructions:
+
+#Ordering parts:
+
+#Assembly:
+
+#Loading Firmware:
 
 #####Sources/Thanks:
+
 Thanks to the folks at http://deskthority.net/ for helping out when I had questions about measurements!
 Also a big thanks to BathroomEpiphanies.  Wouldn't have been able to do it without your amazing wiki.
 [Check it out here!](http://deskthority.net/wiki/KiCAD_keyboard_PCB_design_guide)
