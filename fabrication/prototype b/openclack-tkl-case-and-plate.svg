@@ -18,7 +18,7 @@
 	<circle class="st0" cx="17.5" cy="884.5" r="4.3"/>
 	<circle class="st0" cx="1040.8" cy="884.5" r="4.3"/>
 	<circle class="st0" cx="1040.8" cy="1273.3" r="4.3"/>
-	<path class="st0" d="M4,867.5H1054"/>
+	<path class="st0" d="M4,867.5h1050"/>
 	<path class="st0" d="M4,867.5L0.5,871"/>
 	<path class="st0" d="M4,1290.3l-3.5-3.5"/>
 	<path class="st0" d="M1053.9,1290.3H4"/>
@@ -452,7 +452,7 @@
 	<path class="st0" d="M256.4,361.8v17.3"/>
 	<path class="st0" d="M253.9,361.8h2.4"/>
 	<path class="st0" d="M253.9,353.9v7.9"/>
-	<path class="st0" d="M256.4,353.9h-2.4"/>
+	<path class="st0" d="M256.4,353.9H254"/>
 	<path class="st0" d="M256.4,344.3v9.6"/>
 	<path class="st0" d="M275.2,353.9v-9.6"/>
 	<path class="st0" d="M284.8,353.9v-9.6"/>
@@ -461,7 +461,7 @@
 	<path class="st0" d="M511.6,353.9v-9.6"/>
 	<path class="st0" d="M540,353.9v-9.6"/>
 	<path class="st0" d="M558.9,361.8v17.3"/>
-	<path class="st0" d="M561.4,361.8h-2.4"/>
+	<path class="st0" d="M561.4,361.8H559"/>
 	<path class="st0" d="M561.4,353.9v7.9"/>
 	<path class="st0" d="M558.9,353.9h2.4"/>
 	<path class="st0" d="M558.9,344.3v9.6"/>
@@ -528,11 +528,11 @@
 	<path class="st0" d="M742.4,245.9v-9.6"/>
 	<path class="st0" d="M739.9,245.9h2.4"/>
 	<path class="st0" d="M739.9,253.8v-7.9"/>
-	<path class="st0" d="M742.4,253.8h-2.4"/>
+	<path class="st0" d="M742.4,253.8H740"/>
 	<path class="st0" d="M742.4,271.1v-17.3"/>
 	<path class="st0" d="M805.4,272.2h-39.6"/>
 	<path class="st0" d="M828.9,253.8v17.3"/>
-	<path class="st0" d="M831.4,253.8h-2.4"/>
+	<path class="st0" d="M831.4,253.8H829"/>
 	<path class="st0" d="M831.4,245.9v7.9"/>
 	<path class="st0" d="M828.9,245.9h2.4"/>
 	<path class="st0" d="M828.9,236.3v9.6"/>
