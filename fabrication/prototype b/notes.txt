@@ -1,0 +1,2 @@
+This version of the project is a simple and lightweight case you can create with a laser cutter.
+All units are in mm.
