@@ -22,7 +22,7 @@ Hardware in this project is licensed under the TAPR.  See TAPR.md
 * Mini-B connector.
 * Teensy 2.0++ controller.
 Some images of a completed prototype based on the designs in this repo are in the "prototype_images" folder.
-![Plate](/prototype_images/plate.jpg)![PCB](/prototype_images/teensy0.JPG)
+![Plate](/prototype_images/plate.jpg)![PCB](/prototype_images/pcb.jpg)
 
 ## Project Files
 * /dashkey/* - Firmware for the keyboard, codenamed DashKey.  Coded by SiberX.
